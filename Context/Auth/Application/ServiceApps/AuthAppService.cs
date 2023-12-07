@@ -29,26 +29,26 @@ namespace Auth.Application.ServiceApps
 
         public async Task<LoginViewModel> GetLoginViewModel(string returnUrl)
         {
-            // return await _viewModelFactory.BuildLoginViewModelAsync(returnUrl);
-            var currentUser = _httpContextAccessor.HttpContext?.User;
-            _logger.LogInformation("User com id {Name}", currentUser?.Identity?.Name);
+            return await _viewModelFactory.BuildLoginViewModelAsync(returnUrl);
+            //var currentUser = _httpContextAccessor.HttpContext?.User;
+            //_logger.LogInformation("User com id {Name}", currentUser?.Identity?.Name);
 
-            var dominioUserName = currentUser?.Identity?.Name ?? $"{Environment.MachineName}\\developer";  //"AM\\EX-FMARCOS"
-            var nomeUsuario = dominioUserName.Split('\\').Last();
-            var dominio = dominioUserName.Split('\\').First();
+            //var dominioUserName = currentUser?.Identity?.Name ?? $"{Environment.MachineName}\\developer";  //"AM\\EX-FMARCOS"
+            //var nomeUsuario = dominioUserName.Split('\\').Last();
+            //var dominio = dominioUserName.Split('\\').First();
 
-            var viewModel = new LoginInputModel()
-            {
-                Password = nomeUsuario.ToLower(),
-                Username = nomeUsuario,
-                RememberLogin = true,
-                ReturnUrl = returnUrl,
-                Domain = dominio
-            };
+            //var viewModel = new LoginInputModel()
+            //{
+            //    Password = nomeUsuario.ToLower(),
+            //    Username = nomeUsuario,
+            //    RememberLogin = true,
+            //    ReturnUrl = returnUrl,
+            //    Domain = dominio
+            //};
 
-            var vm = await Login(viewModel);
+            //var vm = await Login(viewModel);
 
-            return vm;
+            //return vm;
         }
 
         public async Task<LogoutViewModel> GetLogoutViewModel(string logoutId, ClaimsPrincipal user)

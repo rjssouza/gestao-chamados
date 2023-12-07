@@ -13,6 +13,7 @@ using IdentityServer4.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Security.Domain.Entities;
 
 namespace Chamados.Configuration
@@ -35,6 +36,13 @@ namespace Chamados.Configuration
             services.AddTransient<IUserPhotoAppService, UserPhotoAppService>();
             services.RegisterAllTypes(typeof(IUseCase<,>), new[] { typeof(AppRegistration).Assembly });
             services.AddSingleton<ICorsPolicyService, CorsPolicyService>();
+            services.AddSingleton<ICorsPolicyService>((container) => {
+                var logger = container.GetRequiredService<ILogger<DefaultCorsPolicyService>>();
+                return new DefaultCorsPolicyService(logger)
+                {
+                    AllowedOrigins = { "*", "*" }
+                };
+            });
             services.AddSingleton<AdUserFactory>();
 
             return services;
