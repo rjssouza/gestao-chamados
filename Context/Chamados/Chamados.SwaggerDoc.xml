@@ -1,0 +1,4975 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Chamados</name>
+    </assembly>
+    <members>
+        <member name="T:Chamados.Application.AutoMapper.ChamadoMapperProfile">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.AutoMapper.ChamadoMapperProfile.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.AutoMapper.FormularioMapperProfile">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.AutoMapper.FormularioMapperProfile.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.Interfaces.IChamadoServiceApp">
+            <summary>
+            Interface abertura de chamado
+            </summary>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IChamadoServiceApp.AbrirChamado(Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaViewModel)">
+            <summary>
+            Abertura de chamados a partir do form de respostas
+            </summary>
+            <param name="formularioRespostaViewModel">Form de respostas</param>
+            <returns>Chamado id</returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IChamadoServiceApp.AdicionarAnexoChamado(Chamados.Application.ViewModels.Chamado.AdicionarAnexoChamadoViewModel)">
+            <summary>
+            Adicionar anexo(s) ao chamado
+            </summary>
+            <param name="modeloEntrada">Anexo para inclusão</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IChamadoServiceApp.AdicionarComentarioChamado(Chamados.Application.ViewModels.Chamado.AdicionarComentarioChamadoViewModel)">
+            <summary>
+            Adicionar comentário ao chamado
+            </summary>
+            <param name="modeloEntrada">Comentário para inclusão</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IChamadoServiceApp.AtendenteChamado(Chamados.Application.ViewModels.Chamado.AtendenteChamadoViewModel)">
+            <summary>
+            Atendente do chamado
+            </summary>
+            <param name="modeloEntrada">Dados do atendente</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IChamadoServiceApp.BaixarAnexoChamado(Chamados.Application.ViewModels.Chamado.BaixarAnexoChamadoViewModel)">
+            <summary>
+            Anexo para baixar
+            </summary>
+            <param name="modeloEntrada">Anexo para baixar</param>
+            <returns>Base 64 do Anexo</returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IChamadoServiceApp.DetalheChamado(Chamados.Application.ViewModels.Chamado.FiltroChamadoComumViewModel)">
+            <summary>
+            Detalhe do Chamado
+            </summary>
+            <param name="filtroChamado">filtro para buscar o chamado</param>
+            <returns>Detalhe do Chamado</returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IChamadoServiceApp.FecharChamado(Chamados.Application.ViewModels.Chamado.FecharChamadoViewModel)">
+            <summary>
+            Fechar chamado
+            </summary>
+            <param name="modeloEntrada">Dados fechamento chamado</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IChamadoServiceApp.IniciarAtendimentoChamado(Chamados.Application.ViewModels.Chamado.IniciarAtendimentoChamadoViewModel)">
+            <summary>
+            Iniciar atendimento do chamado
+            </summary>
+            <param name="modeloEntrada">Dados chamado para iniciar atendimento</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IChamadoServiceApp.RegistrarProgresso(Chamados.Application.ViewModels.Chamado.RegistrarProgressoChamadoViewModel)">
+            <summary>
+            Registrar progresso de atendimento do chamado com comentários
+            </summary>
+            <param name="registrarProgressoChamadoViewModel">Registar progresso view model</param>
+            <returns>Resultado registro de progresso</returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IChamadoServiceApp.RemoverAnexoChamado(System.Int32)">
+            <summary>
+            Remover anexo do chamado
+            </summary>
+            <param name="idAnexo">Id do Anexo</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IChamadoServiceApp.SalvarEdicaoChamado(Chamados.Application.ViewModels.Chamado.ChamadoViewModel)">
+            <summary>
+            Salvar edição do chamado
+            </summary>
+            <param name="chamado">Dados do Chamado</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="T:Chamados.Application.Interfaces.IDashboardAppService">
+            <summary>
+            Interface abertura de chamado
+            </summary>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IDashboardAppService.ListarChamados(Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel)">
+            <summary>
+            Listar chamados
+            </summary>
+            <param name="filtro">Filtro de dados</param>
+            <returns>Lista de chamados</returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IDashboardAppService.ListarChamadosArea(Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel)">
+            <summary>
+            Listar chamados
+            </summary>
+            <param name="filtro">Filtro de dados</param>
+            <returns>Lista de chamados</returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IDashboardAppService.ObterEvolutivo">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IDashboardAppService.ObterIncidentesPorArea">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IDashboardAppService.ObterIncidentesPorAreaStatus">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IDashboardAppService.ObterIncidentesPorAreaTipo">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IDashboardAppService.ObterTotalizadores">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IDashboardAppService.ObterViewModel">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IDashboardAppService.SomarMaquinasMaisImpactadas(Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel)">
+            <summary>
+            Listar chamados
+            </summary>
+            <param name="filtro">Filtro de dados</param>
+            <returns>Lista de chamados</returns>
+        </member>
+        <member name="T:Chamados.Application.Interfaces.IFormularioServiceApp">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.IFormularioServiceApp.ObterFormularioViewModel(Chamados.Application.ViewModels.Formulario.FormularioRequestViewModel)">
+            <summary>
+            Obter formulario view model
+            </summary>
+            <param name="request">Request view model</param>
+            <returns>Result view model</returns>
+        </member>
+        <member name="T:Chamados.Application.Interfaces.INotificarServiceApp">
+            <summary>
+            Interface abertura de chamado
+            </summary>
+        </member>
+        <member name="M:Chamados.Application.Interfaces.INotificarServiceApp.NotificarChamado(Chamados.Application.ViewModels.Chamado.FiltroNotifcarViewModel)">
+            <summary>
+            Notificar
+            </summary>
+            <param name="filtro">filtro para envio da notificacao</param>
+            <returns>Detalhe do Chamado</returns>
+        </member>
+        <member name="T:Chamados.Application.ChamadoServiceApp">
+            <summary>
+            Service para abrir chamados
+            </summary>
+        </member>
+        <member name="M:Chamados.Application.ChamadoServiceApp.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Application.ChamadoServiceApp.AbrirChamado(Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaViewModel)">
+            <summary>
+            Abertura de chamados a partir do form de respostas
+            </summary>
+            <param name="formularioRespostaViewModel">Form de respostas</param>
+            <returns>Chamado id</returns>
+        </member>
+        <member name="M:Chamados.Application.ChamadoServiceApp.AdicionarAnexoChamado(Chamados.Application.ViewModels.Chamado.AdicionarAnexoChamadoViewModel)">
+            <summary>
+            Adicionar anexo(s) ao chamado
+            </summary>
+            <param name="modeloEntrada">Anexo para inclusão</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Application.ChamadoServiceApp.AdicionarComentarioChamado(Chamados.Application.ViewModels.Chamado.AdicionarComentarioChamadoViewModel)">
+            <summary>
+            Adicionar comentário ao chamado
+            </summary>
+            <param name="modeloEntrada">Comentário para inclusão</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Application.ChamadoServiceApp.AtendenteChamado(Chamados.Application.ViewModels.Chamado.AtendenteChamadoViewModel)">
+            <summary>
+            Atendente do chamado
+            </summary>
+            <param name="modeloEntrada">Dados do atendente</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Application.ChamadoServiceApp.BaixarAnexoChamado(Chamados.Application.ViewModels.Chamado.BaixarAnexoChamadoViewModel)">
+            <summary>
+            Anexo para baixar
+            </summary>
+            <param name="modeloEntrada">Anexo para baixar</param>
+            <returns>Base 64 do Anexo</returns>
+        </member>
+        <member name="M:Chamados.Application.ChamadoServiceApp.DetalheChamado(Chamados.Application.ViewModels.Chamado.FiltroChamadoComumViewModel)">
+            <summary>
+            Detalhe do Chamado
+            </summary>
+            <param name="filtroChamado">filtro para buscar o chamado</param>
+            <returns>Detalhe do Chamado</returns>
+        </member>
+        <member name="M:Chamados.Application.ChamadoServiceApp.FecharChamado(Chamados.Application.ViewModels.Chamado.FecharChamadoViewModel)">
+            <summary>
+            Fechar chamado
+            </summary>
+            <param name="modeloEntrada">Dados fechamento chamado</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Application.ChamadoServiceApp.IniciarAtendimentoChamado(Chamados.Application.ViewModels.Chamado.IniciarAtendimentoChamadoViewModel)">
+            <summary>
+            Iniciar atendimento do chamado
+            </summary>
+            <param name="modeloEntrada">Dados chamado para iniciar atendimento</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Application.ChamadoServiceApp.RegistrarProgresso(Chamados.Application.ViewModels.Chamado.RegistrarProgressoChamadoViewModel)">
+            <summary>
+            Registrar progresso de atendimento do chamado com comentários
+            </summary>
+            <param name="registrarProgressoChamadoViewModel">Registar progresso view model</param>
+            <returns>Resultado registro de progresso</returns>
+        </member>
+        <member name="M:Chamados.Application.ChamadoServiceApp.RemoverAnexoChamado(System.Int32)">
+            <summary>
+            Remover anexo do chamado
+            </summary>
+            <param name="idAnexo">Id do Anexo</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Application.ChamadoServiceApp.SalvarEdicaoChamado(Chamados.Application.ViewModels.Chamado.ChamadoViewModel)">
+            <summary>
+            Salvar edição do chamado
+            </summary>
+            <param name="chamado">Dados do Chamado</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="T:Chamados.Application.DashboardAppService">
+            <summary>
+            Service para abrir chamados
+            </summary>
+        </member>
+        <member name="M:Chamados.Application.DashboardAppService.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Application.DashboardAppService.ListarChamados(Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel)">
+            <summary>
+            Listar chamados
+            </summary>
+            <param name="filtro">Filtro de dados</param>
+            <returns>Lista de chamados</returns>
+        </member>
+        <member name="M:Chamados.Application.DashboardAppService.ListarChamadosArea(Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel)">
+            <summary>
+            Listar chamados
+            </summary>
+            <param name="filtro">Filtro de dados</param>
+            <returns>Lista de chamados</returns>
+        </member>
+        <member name="M:Chamados.Application.DashboardAppService.ObterEvolutivo">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Application.DashboardAppService.ObterIncidentesPorArea">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Application.DashboardAppService.ObterIncidentesPorAreaStatus">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Application.DashboardAppService.ObterIncidentesPorAreaTipo">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Application.DashboardAppService.ObterTotalizadores">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Application.DashboardAppService.ObterViewModel">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Application.DashboardAppService.SomarMaquinasMaisImpactadas(Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel)">
+            <summary>
+            Listar chamados
+            </summary>
+            <param name="filtro">Filtro de dados</param>
+            <returns>Lista de chamados</returns>
+        </member>
+        <member name="T:Chamados.Application.FormularioServiceApp">
+            <summary>
+            Formulario Service App
+            </summary>
+        </member>
+        <member name="M:Chamados.Application.FormularioServiceApp.#ctor(System.IServiceProvider)">
+            <summary>
+            Construtor
+            </summary>
+            <param name="serviceProvider">Service provider</param>
+        </member>
+        <member name="M:Chamados.Application.FormularioServiceApp.ObterFormularioViewModel(Chamados.Application.ViewModels.Formulario.FormularioRequestViewModel)">
+            <summary>
+            Obter formulario view model
+            </summary>
+            <param name="request">Request view model</param>
+            <returns>Result view model</returns>
+        </member>
+        <member name="T:Chamados.Application.NotificarServiceApp">
+            <summary>
+            Service para abrir chamados
+            </summary>
+        </member>
+        <member name="M:Chamados.Application.NotificarServiceApp.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Application.NotificarServiceApp.NotificarChamado(Chamados.Application.ViewModels.Chamado.FiltroNotifcarViewModel)">
+            <summary>
+            Notificar
+            </summary>
+            <param name="filtro">filtro para envio da notificacao</param>
+            <returns>Detalhe do Chamado</returns>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.AuditoriaComumViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.AuditoriaComumViewModel.DtReg">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.AuditoriaComumViewModel.UsReg">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.AbrirChamadoResultViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.AbrirChamadoResultViewModel.IdChamado">
+            <summary>
+            Identificador do chamado criado
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.AbrirChamadoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Chamado.AbrirChamadoViewModel.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.AbrirChamadoViewModel.FormularioRespostaRequest">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.AbrirChamadoViewModel.FormularioRespostaResult">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.AdicionarAnexoChamadoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.AdicionarAnexoChamadoViewModel.AnexoChamadoArquivoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.AnexoChamadoArquivoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.AnexoChamadoArquivoViewModel.Anexo">
+            <summary>
+            Base64 do arquivo
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.AnexoChamadoArquivoViewModel.NomeArquivo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.AnexoChamadoArquivoViewModel.TipoArquivo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.AdicionarComentarioChamadoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.AdicionarComentarioChamadoViewModel.Comentario">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.AtendenteChamadoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.AtendenteChamadoViewModel.IdUsusario">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.AtendenteChamadoViewModel.TipoAtendente">
+            <summary>
+            Opções
+            Time
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.AtendenteChamadoViewModel.UsPrimeiroCombate">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.BaixarAnexoChamadoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.BaixarAnexoChamadoViewModel.Anexo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.BaixarAnexoChamadoViewModel.IdAnexo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.BaixarAnexoChamadoViewModel.NomeArquivo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.ChamadoAnexoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoAnexoViewModel.Anexo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoAnexoViewModel.Icone">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoAnexoViewModel.Id">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoAnexoViewModel.NomeArquivo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoAnexoViewModel.TipoArquivo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoAnexoViewModel.UsAnexo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.ChamadoAuditoriaComumViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoAuditoriaComumViewModel.IdChamado">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.ChamadoClassificacaoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoClassificacaoViewModel.ChamadoPai">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoClassificacaoViewModel.Classificacao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoClassificacaoViewModel.Id">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoClassificacaoViewModel.IdChamadoClassPai">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoClassificacaoViewModel.IdChamadoTime">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoClassificacaoViewModel.Time">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.ChamadoComentariosViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoComentariosViewModel.Chamado">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoComentariosViewModel.Comentario">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoComentariosViewModel.EhAtualSolicitante">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoComentariosViewModel.Id">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoComentariosViewModel.UsComentario">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.ChamadoHistoricoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoHistoricoViewModel.Chamado">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoHistoricoViewModel.De">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoHistoricoViewModel.Id">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoHistoricoViewModel.Para">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoHistoricoViewModel.UsHistorico">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.ChamadoPrioridadeViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoPrioridadeViewModel.Ativo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoPrioridadeViewModel.Id">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoPrioridadeViewModel.Prioridade">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoPrioridadeViewModel.SlaAtendimentoHoras">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoPrioridadeViewModel.SlaRecebimentoHoras">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.ChamadoTagViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoTagViewModel.Badge">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoTagViewModel.Id">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoTagViewModel.Tag">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.ChamadoTimeViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoTimeViewModel.Email">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoTimeViewModel.Id">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoTimeViewModel.NomeDoTime">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoTimeViewModel.Responsavel">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.ChamadoTipoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoTipoViewModel.Ativo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoTipoViewModel.ChamadoClassificacao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoTipoViewModel.ChamadoTipo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoTipoViewModel.Cor">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoTipoViewModel.Id">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoTipoViewModel.IdChamadoClassificacao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoTipoViewModel.Ordem">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoTipoViewModel.UsPrimeiroCombate">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.ChamadoStatusViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoStatusViewModel.Id">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoStatusViewModel.Status">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.ChamadoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.Anexos">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.Atendimento">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.ChamadoPai">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.ChamadoTime">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.Classificacao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.Comentarios">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.Descricao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.DtAtendimento">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.DtFechamento">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.DtRecebimento">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.EmAtendimento">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.EstahAtrasado">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.EstahPendente">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.Historico">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.Id">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.IdChamadoClassificacao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.IdChamadoPai">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.IdChamadoPrioridade">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.IdChamadoTime">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.IdChamadoTipo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.IdFormularioResposta">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.IdNorisMaquina">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.Maquina">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.NovoComentario">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.PercentualAtendimento">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.PercentualAtendimentos">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.Prioridade">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.Status">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.Tag">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.Tipo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.UltimaAtualizacao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.UsEmailSolicitante">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.UsSolicitante">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ChamadoViewModel.UsSolicitanteNomeCompleto">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.DetalheChamadosResultViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.DetalheChamadosResultViewModel.EhAdministrador">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.DetalheChamadosResultViewModel.Filtro">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.DetalheChamadosResultViewModel.Result">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.DetalheChamadosResultViewModel.Times">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.FecharChamadoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.FecharChamadoViewModel.ComentarioFinal">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.FiltroChamadoComumViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.FiltroChamadoComumViewModel.Area">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.FiltroChamadoComumViewModel.EhColaborador">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.FiltroChamadoComumViewModel.IdChamado">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.FiltroChamadoComumViewModel.UsuarioAtual">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.FiltroNotifcarViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.FiltroNotifcarViewModel.EmailChamadoEncerrado">
+            <summary>
+            Padrão 'false'
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.FiltroNotifcarViewModel.EmailChamadoEncerradoParaGrupo">
+            <summary>
+            Padrão 'true'
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.FiltroNotifcarViewModel.EmailChamadoEnviado">
+            <summary>
+            Padrão 'true'
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.FiltroNotifcarViewModel.EmailChamadoEnviadoParaGrupo">
+            <summary>
+            Padrão 'true'
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.FiltroNotifcarViewModel.EmailChamadoRecebido">
+            <summary>
+            Padrão 'true'
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.FiltroNotifcarViewModel.EmailChamadoRecebidoParaGrupo">
+            <summary>
+            Padrão 'false'
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.IniciarAtendimentoChamadoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.IniciarAtendimentoChamadoViewModel.ComentarioInicial">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.NotificarMensagemResultViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.NotificarMensagemResultViewModel.MesagemRetorno">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.NotificarResultViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.NotificarResultViewModel.Result">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.ProgressoChamadoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Chamado.ProgressoChamadoViewModel.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ProgressoChamadoViewModel.Comentario">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ProgressoChamadoViewModel.IdChamado">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ProgressoChamadoViewModel.Percentual">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.ProgressoChamadoViewModel.UsAtendente">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.RegistrarProgressoChamadoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Chamado.RegistrarProgressoChamadoViewModel.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.RegistrarProgressoChamadoViewModel.Comentario">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.RegistrarProgressoChamadoViewModel.IdChamado">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.RegistrarProgressoChamadoViewModel.Percentual">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.RegistrarProgressoResultViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Chamado.RegistrarProgressoResultViewModel.#ctor(System.Int32,System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="idChamado"></param>
+             <param name="idProgresso"></param>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.RegistrarProgressoResultViewModel.IdChamado">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.RegistrarProgressoResultViewModel.IdProgresso">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.RemoverAnexoChamadoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.RemoverAnexoChamadoViewModel.IdAnexo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Chamado.UsuarioViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.UsuarioViewModel.UsEmailSolicitante">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.UsuarioViewModel.UsReg">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.UsuarioViewModel.UsSolicitante">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Chamado.UsuarioViewModel.UsSolicitanteNomeCompleto">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.DashboardArea.ListarTotalizadorMaquinasImpactadasViewModel">
+            <summary>
+            Totalizador Maquinas
+            </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.DashboardArea.ListarTotalizadorMaquinasImpactadasViewModel.TotalizadorMaquinasImpactadas">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.DashboardArea.TotalizadorMaquinasImpactadasViewModel">
+            <summary>
+            Totalizador Maquinas
+            </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.DashboardArea.TotalizadorMaquinasImpactadasViewModel.Area">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.DashboardArea.TotalizadorMaquinasImpactadasViewModel.NomeMaquina">
+            <summary>
+            Nome da maquina
+            </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.DashboardArea.TotalizadorMaquinasImpactadasViewModel.QuantidadeChamados">
+            <summary>
+            Quantidade de chamados
+            </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Dashboard.ChamadosPorAreaStatus">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.ChamadosPorAreaStatus.Area">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.ChamadosPorAreaStatus.Id">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.ChamadosPorAreaStatus.Situacao">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.ChamadosPorAreaStatus.Total">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Dashboard.ChamadosPorAreaTipo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.ChamadosPorAreaTipo.Area">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.ChamadosPorAreaTipo.ChamadoTipo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.ChamadosPorAreaTipo.Id">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.ChamadosPorAreaTipo.Total">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Dashboard.DashboardViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Dashboard.DashboardViewModel.#ctor(Core.Application.Seguranca.UserInfo)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.DashboardViewModel.EhAdmin">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.DashboardViewModel.NomeUsuario">
+            <summary>
+            Nome usuário
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Dashboard.Evolutivo.EvolucaoMensalViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Dashboard.Evolutivo.EvolucaoMensalViewModel.#ctor(System.Int32,System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="mes"></param>
+             <param name="valor"></param>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Evolutivo.EvolucaoMensalViewModel.Mes">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Evolutivo.EvolucaoMensalViewModel.Valor">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Dashboard.Evolutivo.EvolutivoMensalTipoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Dashboard.Evolutivo.EvolutivoMensalTipoViewModel.#ctor(System.String,System.String,System.Collections.Generic.List{Chamados.Application.ViewModels.Dashboard.Evolutivo.EvolucaoMensalViewModel})">
+             <summary>
+            
+             </summary>
+             <param name="descricao"></param>
+             <param name="cor"></param>
+             <param name="evolutivoMensal"></param>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Dashboard.Evolutivo.EvolutivoMensalTipoViewModel.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Evolutivo.EvolutivoMensalTipoViewModel.Cor">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Evolutivo.EvolutivoMensalTipoViewModel.Descricao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Evolutivo.EvolutivoMensalTipoViewModel.EvolutivoMensal">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Dashboard.Evolutivo.EvolutivoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Dashboard.Evolutivo.EvolutivoViewModel.#ctor(System.Collections.Generic.List{Chamados.Application.ViewModels.Dashboard.Evolutivo.EvolutivoMensalTipoViewModel},System.Collections.Generic.List{Chamados.Application.ViewModels.Dashboard.TotalPorcentagem})">
+             <summary>
+            
+             </summary>
+             <param name="evolucaoMensal"></param>
+             <param name="totalizadores"></param>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Evolutivo.EvolutivoViewModel.EvolucaoMensal">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Evolutivo.EvolutivoViewModel.Totalizadores">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Dashboard.FiltroComumViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Dashboard.FiltroComumViewModel.#ctor(Core.Application.Seguranca.UserInfo)">
+             <summary>
+            
+             </summary>
+             <param name="userInfo"></param>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.FiltroComumViewModel.Area">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.FiltroComumViewModel.DataCorrente">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.FiltroComumViewModel.NomeUsuario">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesMaquinaViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesMaquinaViewModel.#ctor(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="total"></param>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesMaquinaViewModel.Total">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesMaquinaViewModel.TotalizadorMaquina">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesPorAreaStatusViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesPorAreaStatusViewModel.#ctor(System.Collections.Generic.List{Chamados.Application.ViewModels.Dashboard.ChamadosPorAreaStatus})">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesPorAreaStatusViewModel.Situacoes">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesPorAreaTipoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesPorAreaTipoViewModel.#ctor(System.Collections.Generic.List{Chamados.Application.ViewModels.Dashboard.ChamadosPorAreaTipo})">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesPorAreaTipoViewModel.Tipos">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesPorAreaViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesPorAreaViewModel.#ctor(System.Int32,System.Int32,System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="totalIncidentes"></param>
+             <param name="comParagem"></param>
+             <param name="semParagem"></param>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesPorAreaViewModel.ComParagem">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesPorAreaViewModel.CoreShop">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesPorAreaViewModel.HPDC">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesPorAreaViewModel.SemParagem">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesPorAreaViewModel.SPM">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesPorAreaViewModel.TotalizadorPlanta">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Incidentes.IncidentesPorAreaViewModel.Usinagem">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Dashboard.Incidentes.TotalizadorPlantaViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Dashboard.Incidentes.TotalizadorPlantaViewModel.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Incidentes.TotalizadorPlantaViewModel.DentroSla">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Incidentes.TotalizadorPlantaViewModel.Descricao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Incidentes.TotalizadorPlantaViewModel.ForaSla">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Incidentes.TotalizadorPlantaViewModel.Total">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorInfoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorInfoViewModel.#ctor(System.Int32,System.Int32,System.String,System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="qtdTotalChamados"></param>
+             <param name="total"></param>
+             <param name="descricao"></param>
+             <param name="cor"></param>
+             <param name="arrow"></param>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorInfoViewModel.Arrow">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorInfoViewModel.EmAtraso">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorInfoViewModel.Encerrados">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorInfoViewModel.Pendentes">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorInfoViewModel.ValorMensal">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorViewModel.#ctor(Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorInfoViewModel,Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorInfoViewModel,Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorInfoViewModel,Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorInfoViewModel,Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorInfoViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="totalChamados"></param>
+             <param name="chamadosEncerrados"></param>
+             <param name="chamadosPendentes"></param>
+             <param name="chamadosAtraso"></param>
+             <param name="outrasAreas"></param>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorViewModel.ChamadosAbertos">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorViewModel.ChamadosEmAtraso">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorViewModel.ChamadosEncerrados">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorViewModel.ChamadosPendentes">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.Totalizadores.TotalizadorViewModel.OutrasAreas">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Dashboard.TotalPorcentagem">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Dashboard.TotalPorcentagem.#ctor(System.Int32,System.Int32,System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="qtdTotalChamados"></param>
+             <param name="total"></param>
+             <param name="cor"></param>
+             <param name="descricao"></param>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.TotalPorcentagem.Cor">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.TotalPorcentagem.Descricao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.TotalPorcentagem.Porcentagem">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Dashboard.TotalPorcentagem.Total">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Formulario.FormularioOpcaoDicionarioViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Formulario.FormularioOpcaoDicionarioViewModel.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioOpcaoDicionarioViewModel.Chave">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioOpcaoDicionarioViewModel.IdFormularioOpcao">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioOpcaoDicionarioViewModel.Valor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Formulario.FormularioOpcaoDropDownViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioOpcaoDropDownViewModel.Opcoes">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Formulario.Pair">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Formulario.Pair.#ctor(System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="key"></param>
+             <param name="value"></param>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.Pair.Key">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.Pair.Value">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Formulario.FormularioOpcaoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Formulario.FormularioOpcaoViewModel.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioOpcaoViewModel.ControlType">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioOpcaoViewModel.DropDownOptions">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioOpcaoViewModel.Id">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioOpcaoViewModel.IdQuestao">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioOpcaoViewModel.Key">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioOpcaoViewModel.Order">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioOpcaoViewModel.ProximaQuestao">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioOpcaoViewModel.Texto">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Formulario.FormularioQuestaoViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Formulario.FormularioQuestaoViewModel.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioQuestaoViewModel.EhUltimo">
+            <summary>
+            Indica se e o ultimo
+            </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioQuestaoViewModel.Id">
+             <summary>
+            Identificador do formulario
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioQuestaoViewModel.IdFormulario">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioQuestaoViewModel.Opcoes">
+            <summary>
+            Opções para o questionario
+            </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioQuestaoViewModel.TextoComplementar">
+            <summary>
+            Texto complementar da questão
+            </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioQuestaoViewModel.Titulo">
+            <summary>
+            Enunciado da questão
+            </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Formulario.FormularioRequestViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Formulario.FormularioRequestViewModel.#ctor(System.Int32)">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioRequestViewModel.IdArea">
+            <summary>
+            Identificador da área (default 1)
+            </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaItemViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaItemViewModel.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaItemViewModel.Descricao">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaItemViewModel.IdQuestao">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaItemViewModel.IdResposta">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaViewModel.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaViewModel.Anexos">
+            <summary>
+            Lista de arquivos anexados
+            </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaViewModel.IdFormulario">
+            <summary>
+            Identificador do formulario
+            </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaViewModel.Respostas">
+            <summary>
+            Dicionario de dados, IdQuestao - IdOpcao selecionada
+            </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaViewModel.UsEmailSolicitante">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaViewModel.UsSolicitante">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaViewModel.UsSolicitanteNomeCompleto">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Formulario.FormularioResposta.SalvarFormularioResultViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioResposta.SalvarFormularioResultViewModel.Dicionario">
+            <summary>
+            Formulario opcao dicionario
+            </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioResposta.SalvarFormularioResultViewModel.IdFormularioResposta">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Formulario.FormularioResultViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Application.ViewModels.Formulario.FormularioResultViewModel.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioResultViewModel.Area">
+            <summary>
+            Nome da área do formulário
+            </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioResultViewModel.IdFormulario">
+            <summary>
+            Identificador do formulario
+            </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioResultViewModel.Nome">
+            <summary>
+            Nome do formulario
+            </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Formulario.FormularioResultViewModel.PrimeiraQuestao">
+            <summary>
+            Primeira questão, deve ser exibida no formulario
+            </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.LinhaViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.LinhaViewModel.Bezeichnung">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.LinhaViewModel.Id">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Listar.ChamadosDashboardPorAreaViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosDashboardPorAreaViewModel.Area">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosDashboardPorAreaViewModel.IdChamado">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosDashboardPorAreaViewModel.IdLinha">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosDashboardPorAreaViewModel.IdMaquina">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosDashboardPorAreaViewModel.IdTime">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosDashboardPorAreaViewModel.Maquina">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosDashboardPorAreaViewModel.RegistradoEm">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosDashboardPorAreaViewModel.Responsavel">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosDashboardPorAreaViewModel.Status">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosDashboardPorAreaViewModel.UsReg">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosDashboardPorAreaViewModel.UsSolicitanteNomeCompleto">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Listar.ListarChamadosDashboardPorAreaViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosDashboardPorAreaViewModel.Chamados">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosDashboardPorAreaViewModel.Filtro">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosDashboardPorAreaViewModel.IncidentesAreas">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosDashboardPorAreaViewModel.Linhas">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosDashboardPorAreaViewModel.Maquinas">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosDashboardPorAreaViewModel.Status">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosDashboardPorAreaViewModel.Tags">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosDashboardPorAreaViewModel.Times">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosDashboardPorAreaViewModel.Total">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosDashboardPorAreaViewModel.Usuarios">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel.Area">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel.DataFinal">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel.DataInicial">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel.EhColaborador">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel.Skip">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel.Take">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel.UsuarioAtual">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.Avatar">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.IdChamado">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.IdTime">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.PercentualAtendimento">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.PeriodoBase">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.Planta">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.PlantaNome">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.RegistradoEm">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.Status">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.StatusCor">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.StatusFlag">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.Time">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.UltimaAtividade">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.UltimaAtualizacao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.UsReg">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.UsSolicitante">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ChamadosResultViewModel.UsSolicitanteNomeCompleto">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Listar.ListarChamadosResultViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosResultViewModel.Filtro">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosResultViewModel.Result">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosResultViewModel.Status">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosResultViewModel.Tags">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosResultViewModel.Times">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Listar.ListarChamadosResultViewModel.Usuarios">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.MaquinaViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.MaquinaViewModel.Bezeichnung">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.MaquinaViewModel.Id">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.MaquinaViewModel.Liniennummer">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Templates.TemplateEmailChamadoEncerrado">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Chamados.Application.ViewModels.Templates.TemplateEmailChamadoEncerrado.corpo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Templates.TemplateEmailChamadoEncerrado.Corpo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Templates.TemplateEmailChamadoEnviado">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Chamados.Application.ViewModels.Templates.TemplateEmailChamadoEnviado.corpo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Templates.TemplateEmailChamadoEnviado.Corpo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Application.ViewModels.Templates.TemplateEmailChamadoRecebido">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Chamados.Application.ViewModels.Templates.TemplateEmailChamadoRecebido.corpo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Application.ViewModels.Templates.TemplateEmailChamadoRecebido.Corpo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Configuration.AppRegistration">
+            <summary>
+            Classe para registro o app
+            </summary>
+        </member>
+        <member name="M:Chamados.Configuration.AppRegistration.AddChamados(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adicionar services dos chamados
+            </summary>
+            <param name="services">Service collection</param>
+            <returns>Service collection</returns>
+        </member>
+        <member name="T:Chamados.Data.Context.ChamadosDbContext">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Data.Context.ChamadosDbContext.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+             <summary>
+            
+             </summary>
+             <param name="configuration"></param>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.AreaEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.CartItem">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.ChamadoAnexoEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.ChamadoComentariosEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.ChamadoEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.ChamadoHistoricoEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.ChamadoPrioridadeEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.ChamadoTagEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.ChamadoTimeEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.ChamadoTipoEmailAvisoEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.ChamadoTipoEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.FormularioComponenteEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.FormularioEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.FormularioOpcaoDicionarioEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.FormularioOpcaoEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.FormularioQuestaoEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.FormularioRespostaEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.FormularioRespostaOpcaoEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.LinhaEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.MaquinaEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Data.Context.ChamadosDbContext.DbName">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Data.Migrations.InitialRelease">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.InitialRelease.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.InitialRelease.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.InitialRelease.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Chamados.Data.Migrations.V2">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Chamados.Data.Migrations.V3">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V3.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V3.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V3.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Chamados.Data.Migrations.V4">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V4.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V4.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V4.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Chamados.Data.Migrations.V5">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V5.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V5.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V5.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Chamados.Data.Migrations.V6">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V6.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V6.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V6.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Chamados.Data.Migrations.V7">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V7.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V7.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V7.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Chamados.Data.Migrations.V8">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V8.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V8.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V8.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Chamados.Data.Migrations.V9">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V9.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V9.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V9.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Chamados.Data.Migrations._20230320200712_V10">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations._20230320200712_V10.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations._20230320200712_V10.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations._20230320200712_V10.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Chamados.Data.Migrations._20230320200712_V11">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations._20230320200712_V11.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations._20230320200712_V11.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations._20230320200712_V11.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Chamados.Data.Migrations.V12">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V12.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V12.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V12.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Chamados.Data.Migrations.V13">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V13.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V13.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V13.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Chamados.Data.Migrations.V14">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V14.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V14.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Chamados.Data.Migrations.V14.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Chamados.Domain.Entity.AreaEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.AreaEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.AreaEntity.Formularios">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.AreaEntity.Nome">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.AreaEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.AreaEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.AuditoryEntity`1">
+             <summary>
+            
+             </summary>
+             <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="P:Chamados.Domain.Entity.AuditoryEntity`1.DtReg">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.AuditoryEntity`1.UsReg">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:Chamados.Domain.Entity.ChamadoAnexoArquivoEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoAnexoArquivoEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoAnexoArquivoEntity.IdChamado">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoAnexoArquivoEntity.NomeArquivo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoAnexoArquivoEntity.TipoArquivo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoAnexoArquivoEntity.UsAnexo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoAnexoArquivoEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.ChamadoAnexoArquivoEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.ChamadoAnexoEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoAnexoEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoAnexoEntity.Anexo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoAnexoEntity.ChamadoEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoAnexoEntity.IdChamado">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoAnexoEntity.NomeArquivo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoAnexoEntity.TipoArquivo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoAnexoEntity.UsAnexo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoAnexoEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.ChamadoAnexoEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.ChamadoClassificacaoEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoClassificacaoEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoClassificacaoEntity.ChamadoFilho">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoClassificacaoEntity.ChamadoPai">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoClassificacaoEntity.ChamadosLista">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoClassificacaoEntity.ChamadoTime">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoClassificacaoEntity.ChamadoTipo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoClassificacaoEntity.Classificacao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoClassificacaoEntity.IdChamadoClassPai">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoClassificacaoEntity.IdChamadoTime">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoClassificacaoEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.ChamadoClassificacaoEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.ChamadoComentariosEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoComentariosEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoComentariosEntity.ChamadoEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoComentariosEntity.Comentario">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoComentariosEntity.IdChamado">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoComentariosEntity.UsComentario">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoComentariosEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.ChamadoComentariosEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.ChamadoEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.EstahAtrasado">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.Anexos">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.Atendimento">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.ChamadoClassificacaoEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.ChamadoHistoricoLista">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.ChamadoPrioridade">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.ChamadoTag">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.ChamadoTime">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.ChamadoTipo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.Comentarios">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.Descricao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.DtAtendimento">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.DtFechamento">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.DtRecebimento">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.EmAtendimento">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.EstahPendente">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.FormularioResposta">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.IdChamadoClassificacao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.IdChamadoPai">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.IdChamadoPrioridade">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.IdChamadoTime">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.IdChamadoTipo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.IdFormularioResposta">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.IdNorisMaquina">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.PercentualAtendimento">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.PercentualAtendimentos">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.Status">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.UltimaAtualizacao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.UsEmailSolicitante">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.UsSolicitante">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoEntity.UsSolicitanteNomeCompleto">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.ChamadoEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.ChamadoHistoricoEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoHistoricoEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoHistoricoEntity.ChamadoEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoHistoricoEntity.De">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoHistoricoEntity.IdChamado">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoHistoricoEntity.Para">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoHistoricoEntity.UsHistorico">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoHistoricoEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.ChamadoHistoricoEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.ChamadoPrioridadeEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoPrioridadeEntity.Ativo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoPrioridadeEntity.ChamadosLista">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoPrioridadeEntity.Prioridade">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoPrioridadeEntity.SlaAtendimentoHoras">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoPrioridadeEntity.SlaRecebimentoHoras">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoPrioridadeEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.ChamadoPrioridadeEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.ChamadoTagEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoTagEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoTagEntity.#ctor(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="tag"></param>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTagEntity.ChamadosEntity">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTagEntity.Tag">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoTagEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.ChamadoTagEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.ChamadoTimeEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTimeEntity.ChamadoClassificacao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTimeEntity.Chamados">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTimeEntity.Email">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTimeEntity.NomeDoTime">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTimeEntity.Responsavel">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoTimeEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.ChamadoTimeEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.ChamadoTipoEmailAvisoEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoTipoEmailAvisoEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTipoEmailAvisoEntity.Ativo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTipoEmailAvisoEntity.ChamadoTipo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTipoEmailAvisoEntity.Email">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTipoEmailAvisoEntity.IdChamadoTipo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTipoEmailAvisoEntity.NomeResponsavel">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoTipoEmailAvisoEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.ChamadoTipoEmailAvisoEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.ChamadoTipoEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoTipoEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTipoEntity.Ativo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTipoEntity.ChamadoClassificacao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTipoEntity.Chamados">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTipoEntity.ChamadoTipo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTipoEntity.ChamadoTipoEmailAvisos">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTipoEntity.Cor">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTipoEntity.IdChamadoClassificacao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTipoEntity.Ordem">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.ChamadoTipoEntity.UsPrimeiroCombate">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.ChamadoTipoEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.ChamadoTipoEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.Chamado.ProgressoChamadoEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.Chamado.ProgressoChamadoEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Chamado.ProgressoChamadoEntity.Chamado">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Chamado.ProgressoChamadoEntity.Comentario">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Chamado.ProgressoChamadoEntity.IdChamado">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Chamado.ProgressoChamadoEntity.Percentual">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Chamado.ProgressoChamadoEntity.UsAtendente">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.Chamado.ProgressoChamadoEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.Chamado.ProgressoChamadoEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.Formulario.FormularioEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.Formulario.FormularioEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioEntity.Area">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioEntity.IdArea">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioEntity.Nome">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioEntity.Questoes">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioEntity.Respostas">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.Formulario.FormularioEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.Formulario.FormularioEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.Formulario.FormularioQuestaoEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.Formulario.FormularioQuestaoEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioQuestaoEntity.Formulario">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioQuestaoEntity.IdFormulario">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioQuestaoEntity.IdProximaQuestao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioQuestaoEntity.Opcoes">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioQuestaoEntity.OpcoesAnteriores">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioQuestaoEntity.Ordem">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioQuestaoEntity.Respostas">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioQuestaoEntity.TextoComplementar">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioQuestaoEntity.Titulo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.Formulario.FormularioQuestaoEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.Formulario.FormularioQuestaoEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaEntity.Chamado">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaEntity.Formulario">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaEntity.IdChamado">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaEntity.IdFormulario">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaEntity.Respostas">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaEntity.UsSolicitante">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaOpcaoEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaOpcaoEntity.Descricao">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaOpcaoEntity.FormularioResposta">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaOpcaoEntity.IdFormularioResposta">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaOpcaoEntity.IdOpcao">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaOpcaoEntity.IdQuestao">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaOpcaoEntity.Opcao">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaOpcaoEntity.Questao">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaOpcaoEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.Formulario.FormularioResposta.FormularioRespostaOpcaoEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.Formulario.Opcao.FormularioComponenteEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.Formulario.Opcao.FormularioComponenteEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.Opcao.FormularioComponenteEntity.IdTipo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.Opcao.FormularioComponenteEntity.Label">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.Opcao.FormularioComponenteEntity.Opcoes">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.Formulario.Opcao.FormularioComponenteEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.Formulario.Opcao.FormularioComponenteEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoDicionarioEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoDicionarioEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoDicionarioEntity.Chave">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoDicionarioEntity.IdFormularioOpcao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoDicionarioEntity.Opcao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoDicionarioEntity.Valor">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoDicionarioEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoDicionarioEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoEntity.Componente">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoEntity.Dicionario">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoEntity.IdComponente">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoEntity.IdProximaQuestao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoEntity.IdQuestao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoEntity.ProximaQuestao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoEntity.Questao">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoEntity.Respostas">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoEntity.Texto">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.LinhaEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.LinhaEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.LinhaEntity.Bezeichnung">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.LinhaEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.LinhaEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.MaquinaEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.MaquinaEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.MaquinaEntity.Bezeichnung">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.MaquinaEntity.Liniennummer">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.MaquinaEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.MaquinaEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.UsuariosChamadosEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.UsuariosChamadosEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.UsuariosChamadosEntity.UsReg">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.UsuariosChamadosEntity.UsSolicitante">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.UsuariosChamadosEntity.UsSolicitanteNomeCompleto">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.UsuariosChamadosEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.UsuariosChamadosEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.VwChamadoAreaStatusEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.VwChamadoAreaStatusEntity.Area">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.VwChamadoAreaStatusEntity.Situacao">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.VwChamadoAreaStatusEntity.Total">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.VwChamadoAreaStatusEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.VwChamadoAreaStatusEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Entity.VwChamadoAreaTipoEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.VwChamadoAreaTipoEntity.Area">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.VwChamadoAreaTipoEntity.ChamadoTipo">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Entity.VwChamadoAreaTipoEntity.Total">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.Entity.VwChamadoAreaTipoEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Chamados.Domain.Entity.VwChamadoAreaTipoEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:Chamados.Domain.Enum.StatusChamadoEnum">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Chamados.Domain.Enum.StatusChamadoEnum.Novo">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.StatusChamadoEnum.Atendimento">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.StatusChamadoEnum.Atraso">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.StatusChamadoEnum.Finalizado">
+            
+        </member>
+        <member name="T:Chamados.Domain.Enum.TagBadgeConst">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Chamados.Domain.Enum.TagBadgeConst.Acesso">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TagBadgeConst.CoreShop">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TagBadgeConst.HPDC">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TagBadgeConst.Incidente">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TagBadgeConst.Maquina">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TagBadgeConst.Outros">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TagBadgeConst.Relatorios">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TagBadgeConst.SPM">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TagBadgeConst.Usinagem">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TagBadgeConst.listaTagBadge">
+            
+        </member>
+        <member name="P:Chamados.Domain.Enum.TagBadgeConst.ListaTagBadge">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Domain.Enum.TipoDicionarioEnum">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoDicionarioEnum.Tipo">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoDicionarioEnum.Prioridade">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoDicionarioEnum.Tag">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoDicionarioEnum.Maquina">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoDicionarioEnum.Classificacao">
+            Classificação
+        </member>
+        <member name="T:Chamados.Domain.Enum.TipoEnum">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoEnum.RadioButton">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoEnum.TextBox">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoEnum.DropDown">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoEnum.TextArea">
+            
+        </member>
+        <member name="T:Chamados.Domain.Enum.TipoIconeEnum">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.BAT">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.CS">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.DLL">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.DOC">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.DOCX">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.EXE">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.FILE">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.GIF">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.HTML">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.JPEG">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.JPG">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.JS">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.JSON">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.M4A">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.MKV">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.MP3">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.MP4">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.MPG">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.PDF">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.PNG">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.RAR">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.TAR">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.TEXT_HTML">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.WMV">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.XLS">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.XLSX">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.XML">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.ZIP">
+            
+        </member>
+        <member name="F:Chamados.Domain.Enum.TipoIconeEnum.listaIcone">
+            
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Bat">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Cs">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Dll">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Doc">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Docx">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Exe">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.File">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Gif">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Html">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Jpeg">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Jpg">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Js">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Json">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.ListaIcone">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.M4a">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Mkv">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Mp3">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Mp4">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Mpg">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Pdf">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Png">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Rar">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Tar">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.TextHtml">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Wmv">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Xls">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Xlsx">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Xml">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Chamados.Domain.Enum.TipoIconeEnum.Zip">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Chamados.AbrirChamadoUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Chamados.AbrirChamadoUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Chamados.AbrirChamadoUseCase.ExecuteInternal(Chamados.Application.ViewModels.Chamado.AbrirChamadoViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="entry"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Chamados.AbrirChamadoUseCase.ValidateEntry(Chamados.Application.ViewModels.Chamado.AbrirChamadoViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="entry"></param>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Chamados.AtribuirAtendenteUseCase">
+            <summary>
+            Caso de uso de atribuir atendente
+            </summary>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Chamados.DetalheChamadoUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Chamados.DetalheChamadoUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Chamados.DetalheChamadoUseCase.ExecuteInternal(Chamados.Application.ViewModels.Chamado.FiltroChamadoComumViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="filtroChamado">filtro para buscar o chamado</param>
+             <returns>Detalhe do Chamado</returns>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Chamados.NotificarUseCase">
+            <summary>
+            Caso de uso para notificação e envio de emails
+            </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Chamados.NotificarUseCase.#ctor(System.IServiceProvider,Microsoft.Extensions.Configuration.IConfiguration)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <param name="configuration"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Chamados.NotificarUseCase.ExecuteInternal(Chamados.Application.ViewModels.Chamado.FiltroNotifcarViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="filtroChamado">filtro para buscar o chamado</param>
+             <returns>Detalhe do Chamado</returns>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Listar.AdicionarAnexoChamadoUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.AdicionarAnexoChamadoUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.AdicionarAnexoChamadoUseCase.ExecuteInternal(Chamados.Application.ViewModels.Chamado.AdicionarAnexoChamadoViewModel)">
+            <summary>
+            Adicionar anexo(s) ao chamado
+            </summary>
+            <param name="modeloEntrada">Anexo para inclusão</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.AdicionarAnexoChamadoUseCase.ValidateEntry(Chamados.Application.ViewModels.Chamado.AdicionarAnexoChamadoViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="modeloEntrada"></param>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Listar.AtendenteChamadoUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.AtendenteChamadoUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.AtendenteChamadoUseCase.ExecuteInternal(Chamados.Application.ViewModels.Chamado.AtendenteChamadoViewModel)">
+            <summary>
+            Modificar atendente do chamado
+            </summary>
+            <param name="modeloEntrada">Dados do atendente</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.AtendenteChamadoUseCase.ValidateEntry(Chamados.Application.ViewModels.Chamado.AtendenteChamadoViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="modeloEntrada"></param>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Listar.BaixarAnexoChamadoUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.BaixarAnexoChamadoUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.BaixarAnexoChamadoUseCase.ExecuteInternal(Chamados.Application.ViewModels.Chamado.BaixarAnexoChamadoViewModel)">
+            <summary>
+            Anexo para baixar
+            </summary>
+            <param name="modeloEntrada">Anexo para baixar</param>
+            <returns>Base 64 do Anexo</returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.BaixarAnexoChamadoUseCase.ValidateEntry(Chamados.Application.ViewModels.Chamado.BaixarAnexoChamadoViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="modeloEntrada"></param>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Listar.ComentarioChamadoUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.ComentarioChamadoUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.ComentarioChamadoUseCase.ExecuteInternal(Chamados.Application.ViewModels.Chamado.AdicionarComentarioChamadoViewModel)">
+            <summary>
+            Adicionar comentário ao chamado
+            </summary>
+            <param name="modeloEntrada">Comentário para inclusão</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.ComentarioChamadoUseCase.ValidateEntry(Chamados.Application.ViewModels.Chamado.AdicionarComentarioChamadoViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="modeloEntrada"></param>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Listar.FecharChamadoUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.FecharChamadoUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.FecharChamadoUseCase.ExecuteInternal(Chamados.Application.ViewModels.Chamado.FecharChamadoViewModel)">
+            <summary>
+            Fechar chamado
+            </summary>
+            <param name="modeloEntrada">Dados fechamento chamado</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.FecharChamadoUseCase.ValidateEntry(Chamados.Application.ViewModels.Chamado.FecharChamadoViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="modeloEntrada"></param>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Listar.IniciarAtendimentoChamadoUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.IniciarAtendimentoChamadoUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.IniciarAtendimentoChamadoUseCase.ExecuteInternal(Chamados.Application.ViewModels.Chamado.IniciarAtendimentoChamadoViewModel)">
+            <summary>
+            Iniciar atendimento do chamado
+            </summary>
+            <param name="modeloEntrada">Dados chamado para iniciar atendimento</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.IniciarAtendimentoChamadoUseCase.ValidateEntry(Chamados.Application.ViewModels.Chamado.IniciarAtendimentoChamadoViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="modeloEntrada"></param>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Listar.ReceberChamadoAtendimentoUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.ReceberChamadoAtendimentoUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.ReceberChamadoAtendimentoUseCase.ExecuteInternal(Chamados.Application.ViewModels.Chamado.ChamadoViewModel)">
+            <summary>
+            Salvar edição do chamado
+            </summary>
+            <param name="chamado">Dados do Chamado</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Listar.RemoverAnexoChamadoUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.RemoverAnexoChamadoUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.RemoverAnexoChamadoUseCase.ExecuteInternal(Chamados.Application.ViewModels.Chamado.RemoverAnexoChamadoViewModel)">
+            <summary>
+            Remover anexo(s) ao chamado
+            </summary>
+            <param name="modeloEntrada">Anexo para remoção</param>
+            <returns>Detalhe do chamado</returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.RemoverAnexoChamadoUseCase.ValidateEntry(Chamados.Application.ViewModels.Chamado.RemoverAnexoChamadoViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="modeloEntrada"></param>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Listar.ListarChamadosDashboardAreaUseCase">
+            <summary>
+            UseCase responsável por listar os chamados do dashboard por área
+            </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.ListarChamadosDashboardAreaUseCase.#ctor(System.IServiceProvider)">
+            <summary>
+            Construtor
+            </summary>
+            <param name="serviceProvider"></param>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.ListarChamadosDashboardAreaUseCase.ExecuteInternal(Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel)">
+            <summary>
+            Método responsável por executar o caso de uso
+            </summary>
+            <param name="filtro"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Listar.ListarChamadosUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.ListarChamadosUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Listar.ListarChamadosUseCase.ExecuteInternal(Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="filtro"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Chamado.RegistrarProgressoUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Chamados.Domain.UseCases.Chamado.RegistrarProgressoUseCase._currentUser">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Chamados.Domain.UseCases.Chamado.RegistrarProgressoUseCase._progressoChamadoRepository">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Chamado.RegistrarProgressoUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Chamado.RegistrarProgressoUseCase.ExecuteInternal(Chamados.Application.ViewModels.Chamado.RegistrarProgressoChamadoViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="entry"></param>
+             <returns></returns>
+             <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Chamado.RegistrarProgressoUseCase.ValidateEntry(Chamados.Application.ViewModels.Chamado.RegistrarProgressoChamadoViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="entry"></param>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.DashboardArea.TotalizadorMaquinasImpactadasUseCase">
+            <summary>
+            Totalizador Maquinas
+            </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.DashboardArea.TotalizadorMaquinasImpactadasUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.DashboardArea.TotalizadorMaquinasImpactadasUseCase.ExecuteInternal(Chamados.Application.ViewModels.Listar.ListarChamadosFiltroViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="filtro"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Dashboard.DashboardUseCase`1">
+             <summary>
+            
+             </summary>
+             <typeparam name="TResult"></typeparam>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Dashboard.DashboardUseCase`1.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="P:Chamados.Domain.UseCases.Dashboard.DashboardUseCase`1.ChamadoRepository">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Dashboard.DashboardUseCase`1.ExecuteInternal(Chamados.Application.ViewModels.Dashboard.FiltroComumViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="entry"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Dashboard.DashboardUseCase`1.ProcessarChamados(System.Collections.Generic.IEnumerable{Chamados.Domain.Entity.ChamadoEntity},Chamados.Application.ViewModels.Dashboard.FiltroComumViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="chamados"></param>
+             <param name="entry"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Dashboard.DashboardUseCase`1.ValidateEntry(Chamados.Application.ViewModels.Dashboard.FiltroComumViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="entry"></param>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Dashboard.EvolutivoUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Dashboard.EvolutivoUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Dashboard.EvolutivoUseCase.ProcessarChamados(System.Collections.Generic.IEnumerable{Chamados.Domain.Entity.ChamadoEntity},Chamados.Application.ViewModels.Dashboard.FiltroComumViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="chamados"></param>
+             <param name="entry"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Dashboard.EvolutivoUseCase.ObterEvolucaoMensal(System.Collections.Generic.IEnumerable{Chamados.Domain.Entity.ChamadoEntity})">
+             <summary>
+            
+             </summary>
+             <param name="chamados"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Dashboard.IncidentesPorAreaStatusUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Dashboard.IncidentesPorAreaStatusUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Dashboard.IncidentesPorAreaStatusUseCase.ProcessarChamados(System.Collections.Generic.IEnumerable{Chamados.Domain.Entity.ChamadoEntity},Chamados.Application.ViewModels.Dashboard.FiltroComumViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="chamados"></param>
+             <param name="entry"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Dashboard.IncidentesPorAreaTipoUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Dashboard.IncidentesPorAreaTipoUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Dashboard.IncidentesPorAreaTipoUseCase.ProcessarChamados(System.Collections.Generic.IEnumerable{Chamados.Domain.Entity.ChamadoEntity},Chamados.Application.ViewModels.Dashboard.FiltroComumViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="chamados"></param>
+             <param name="entry"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Dashboard.IncidentesPorAreaUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Dashboard.IncidentesPorAreaUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Dashboard.IncidentesPorAreaUseCase.ProcessarChamados(System.Collections.Generic.IEnumerable{Chamados.Domain.Entity.ChamadoEntity},Chamados.Application.ViewModels.Dashboard.FiltroComumViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="chamados"></param>
+             <param name="entry"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Dashboard.TotalizadoresUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Dashboard.TotalizadoresUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Dashboard.TotalizadoresUseCase.ProcessarChamados(System.Collections.Generic.IEnumerable{Chamados.Domain.Entity.ChamadoEntity},Chamados.Application.ViewModels.Dashboard.FiltroComumViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="chamados"></param>
+             <param name="entry"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Dashboard.TotalizadoresUseCase.ObterEvolucaoMensal(System.Collections.Generic.IEnumerable{Chamados.Domain.Entity.ChamadoEntity})">
+             <summary>
+            
+             </summary>
+             <param name="chamados"></param>
+             <returns></returns>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Formulario.ObterDropDownOpcaoUseCase">
+            <summary>
+            Caso de uso obter dropdown
+            </summary>
+        </member>
+        <member name="F:Chamados.Domain.UseCases.Formulario.ObterDropDownOpcaoUseCase._maquinaEntity">
+            <summary>
+            Repositório maqunia entity
+            </summary>
+        </member>
+        <member name="F:Chamados.Domain.UseCases.Formulario.ObterDropDownOpcaoUseCase._opcaoEntityRepository">
+            <summary>
+            Repositorio formulário opção
+            </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Formulario.ObterDropDownOpcaoUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Formulario.ObterDropDownOpcaoUseCase.ExecuteInternal(Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoEntity)">
+             <summary>
+            
+             </summary>
+             <param name="entry"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Formulario.ObterDropDownOpcaoUseCase.ValidateEntry(Chamados.Domain.Entity.Formulario.Opcao.FormularioOpcaoEntity)">
+            <summary>
+            Validação de formulário opção
+            </summary>
+            <param name="entry">FormularioOpcaoEntity</param>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Formulario.ObterFormularioUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Formulario.ObterFormularioUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Formulario.ObterFormularioUseCase.ExecuteInternal(Chamados.Application.ViewModels.Formulario.FormularioRequestViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="entry"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Formulario.ObterFormularioUseCase.ValidateEntry(Chamados.Application.ViewModels.Formulario.FormularioRequestViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="entry"></param>
+        </member>
+        <member name="T:Chamados.Domain.UseCases.Formulario.SalvarFormularioUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Formulario.SalvarFormularioUseCase.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Formulario.SalvarFormularioUseCase.ExecuteInternal(Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="entry"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Chamados.Domain.UseCases.Formulario.SalvarFormularioUseCase.ValidateEntry(Chamados.Application.ViewModels.Formulario.FormularioResposta.FormularioRespostaViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="entry"></param>
+        </member>
+    </members>
+</doc>

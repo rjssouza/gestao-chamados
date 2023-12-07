@@ -1,0 +1,39 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+/.vs
+/Core/Dto/Module.Core.Dto/bin
+/Core/Dto/Module.Core.Dto/obj
+/Core/Register/Module.Core.IoC.Register/bin
+/Core/Register/Module.Core.IoC.Register/obj
+/Core/Repository/Module.Core.Repository/bin
+/Core/Repository/Module.Core.Repository/obj
+*.user
+**/bin
+**/obj
+/Web/Angular/node_modules
+/node_modules
+/.vscode
+/Web/ChamadosApi/appsettings.Development.json
+/Web/EnviarEmailApi/appsettings.Development.json
+/Web/IdentityServer/appsettings.Development.json

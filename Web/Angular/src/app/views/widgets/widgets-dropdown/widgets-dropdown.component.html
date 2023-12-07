@@ -1,0 +1,127 @@
+<c-row>
+  <c-col sm="6" xl="3">
+    <c-widget-stat-a
+      class="mb-4"
+      color="primary"
+      title="Chamados Abertos"
+    >
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        268
+        <span class="fs-6 fw-normal">
+          (Total<svg cIcon name="cilArrowBottom"></svg>)
+        </span>
+      </ng-template>
+      <ng-template cTemplateId="widgetActionTemplate">
+        <c-dropdown alignment="end" variant="btn-group">
+          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
+            <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
+          </button>
+          <ul cDropdownMenu>
+            <li><a routerLink="./" cDropdownItem>Atualizar Card</a></li>
+            <li><a routerLink="./" cDropdownItem>Atualizar Dashboard</a></li>
+            <li><a routerLink="./" cDropdownItem>Criar Chamado</a></li>
+            <li>
+              <hr cDropdownDivider>
+            </li>
+            <li>
+              <button cDropdownItem>Enconder Card</button>
+            </li>
+          </ul>
+        </c-dropdown>
+      </ng-template>
+      <ng-template cTemplateId="widgetChartTemplate">
+        <c-chart [data]="data[0]" [options]="options[0]" class="mt-3 mx-3" height="70" type="line"></c-chart>
+      </ng-template>
+    </c-widget-stat-a>
+  </c-col>
+  <c-col sm="6" xl="3">
+    <c-widget-stat-a
+      [title]="'Chamados Encerrados'"
+      class="mb-4"
+      color="info"
+    >
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        <span>112</span>
+        <span class="fs-6 fw-normal">
+          (20% <svg cIcon name="cilArrowTop"></svg>)
+        </span>
+      </ng-template>
+      <ng-template cTemplateId="widgetActionTemplate">
+        <c-dropdown alignment="end" variant="btn-group">
+          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
+            <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
+          </button>
+          <ul cDropdownMenu>
+            <li><a routerLink="./" cDropdownItem>Atualizar Card</a></li>
+            <li><a routerLink="./" cDropdownItem>Atualizar Dashboard</a></li>
+            <li><a routerLink="./" cDropdownItem>Criar chamado</a></li>
+            <li><a [disabled]="true" routerLink="./" cDropdownItem>Esconder Card</a></li>
+          </ul>
+        </c-dropdown>
+      </ng-template>
+      <ng-template cTemplateId="widgetChartTemplate">
+        <c-chart [data]="data[1]" [options]="options[1]" class="mt-3 mx-3" height="70" type="line"></c-chart>
+      </ng-template>
+    </c-widget-stat-a>
+  </c-col>
+  <c-col sm="6" xl="3">
+    <c-widget-stat-a
+      [title]="'Chamados Pendentes'"
+      class="mb-4"
+      color="warning"
+    >
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        <span>47</span>
+        <span class="fs-6 fw-normal">
+          (30% <svg cIcon name="cilArrowTop"></svg>)
+        </span>
+      </ng-template>
+      <ng-template cTemplateId="widgetActionTemplate">
+        <c-dropdown alignment="end" variant="btn-group">
+          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
+            <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
+          </button>
+          <ul cDropdownMenu>
+            <li><a routerLink="./" cDropdownItem>Atualizar Card</a></li>
+            <li><a routerLink="./" cDropdownItem>Atualizar Dashboard</a></li>
+            <li><a routerLink="./" cDropdownItem>Criar chamado</a></li>
+            <li><a [disabled]="true" routerLink="./" cDropdownItem>Esconder Card</a></li>
+          </ul>
+        </c-dropdown>
+      </ng-template>
+      <ng-template cTemplateId="widgetChartTemplate">
+        <c-chart [data]="data[2]" [options]="options[2]" class="mt-3" height="70" type="line"></c-chart>
+      </ng-template>
+    </c-widget-stat-a>
+  </c-col>
+  <c-col sm="6" xl="3">
+    <c-widget-stat-a
+      [title]="'Chamados em Atraso (SLA crítico)'"
+      class="mb-4"
+      color="danger"
+    >
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        <span>75</span>
+        <span class="fs-6 fw-normal">
+          (-25.6% <svg cIcon name="cilArrowBottom"></svg>)
+        </span>
+      </ng-template>
+      <ng-template cTemplateId="widgetActionTemplate">
+        <c-dropdown alignment="end" variant="btn-group">
+          <button [caret]="false" cButton cDropdownToggle class="p-0" color="transparent">
+            <svg cIcon class="text-high-emphasis-inverse" name="cilOptions"></svg>
+          </button>
+          <ul cDropdownMenu>
+            <li><a routerLink="./" cDropdownItem>Atualizar Card</a></li>
+            <li><a routerLink="./" cDropdownItem>Atualizar Dashboard</a></li>
+            <li><a routerLink="./" cDropdownItem>Criar chamado</a></li>
+            <li><a [disabled]="true" routerLink="./" cDropdownItem>Esconder Card</a></li>
+          </ul>
+        </c-dropdown>
+      </ng-template>
+      <ng-template cTemplateId="widgetChartTemplate">
+        <c-chart [data]="data[3]" [options]="options[3]" class="mt-3 mx-3" height="70" type="bar"></c-chart>
+      </ng-template>
+    </c-widget-stat-a>
+  </c-col>
+</c-row>

@@ -1,0 +1,35 @@
+<div [formGroup]="form">
+
+  <div [ngSwitch]="opcao.controlType">
+    <div *ngSwitchCase="'textbox'">
+      <label cLabel [attr.for]="opcao.key">{{opcao.label}}</label>
+      <c-input-group class="mb-3">
+        <input name="1" [id]="opcao.key" [type]="opcao.type" (change)="onItemChange(opcao, $event)"  cFormControl />
+      </c-input-group>
+    </div>
+
+    <div *ngSwitchCase="'textarea'">
+      <label cLabel [attr.for]="opcao.key">{{opcao.label}}</label>
+      <c-input-group class="mb-3">
+        <textarea name="1" [id]="opcao.key" (change)="onItemChange(opcao, $event)" cFormControl rows="3" ></textarea>
+      </c-input-group>
+    </div>
+
+    <div *ngSwitchCase="'dropdown'">
+      <label cLabel [attr.for]="opcao.key">{{opcao.label}}</label>
+      <select [id]="opcao.key" name="1" (change)="onItemChange(opcao, $event)" cSelect>
+        <option [value]="">Selecione um item</option>
+        <option *ngFor="let opt of opcao.dropDownOptions" [value]="opt.key">{{opt.value}}</option>
+      </select>
+    </div>
+
+    <div *ngSwitchCase="'radiobutton'" style="margin-bottom: 30px;">
+      <c-form-check>
+        <input cFormCheckInput name="1" type="radio" id="opt{{opcao.id}}" [value]="opcao.id" (change)="onItemChange(opcao, $event)" [checked]="resposta == null ? false : resposta.idResposta == opcao.id" />
+        <label cFormCheckLabel style="font-size: 1.2rem;" for="opt{{opcao.id}}">{{opcao.texto}}</label>
+      </c-form-check>
+    </div>
+  </div>
+
+  <div class="errorMessage" *ngIf="!isValid">{{opcao.label}} is required</div>
+</div>

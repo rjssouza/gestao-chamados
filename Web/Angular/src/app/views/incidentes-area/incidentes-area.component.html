@@ -1,0 +1,108 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+<c-col xs>
+  <c-card class="mb-4">
+    <c-card-header class="d-flex justify-content-between align-items-center">
+      <div class="d-flex justify-content-start align-items-center">Incidentes por Área</div>
+      <div class="d-flex justify-content-end">
+        <c-form-check inline>
+          <input cFormCheckInput type="radio" value="checkOne" name="radioIncidentesArea"
+          [checked]="porStatus" (click)="alternarTipoStatus()"/>
+          <label cFormCheckLabel for="checkOne">Por Status</label>
+        </c-form-check>
+        <c-form-check inline>
+          <input cFormCheckInput type="radio" value="checkTwo" name="radioIncidentesArea"
+          [checked]="porTipo" (click)="alternarTipoStatus()"/>
+          <label cFormCheckLabel for="checkTwo">Por Perfil de Abertura</label>
+        </c-form-check>
+      </div>
+    </c-card-header>
+    <c-card-body>
+      <c-row>
+        <c-col md="12" xl="12" xs="12">
+          <c-row>
+            <c-col sm="3">
+              <span md="6" xl="6" xs="6">HPDC</span>
+              <c-chart type="doughnut" [data]="chartDoughnutDataHPDC"></c-chart>
+            </c-col>
+
+            <c-col sm="3">
+              <span md="6" xl="6" xs="6">Usinagem</span>
+              <c-chart type="doughnut" [data]="chartDoughnutDataUsi"></c-chart>
+            </c-col>
+
+            <c-col sm="3">
+              <span md="6" xl="6" xs="6">SPM</span>
+              <c-chart type="doughnut" [data]="chartDoughnutDataSPM"></c-chart>
+            </c-col>
+
+            <c-col sm="3">
+              <span md="6" xl="6" xs="6">Outras áreas</span>
+              <c-chart type="doughnut" [data]="chartDoughnutData"></c-chart>
+            </c-col>
+          </c-row>
+        </c-col>
+
+        <div *ngIf="porStatus; else legendTipo" class="legend text-left" ngPreserveWhitespaces>
+          <small>
+            <sup>
+              <span class="badge badge-pill badge-sm bg-info">&nbsp;</span>
+            </sup>
+            <span>Novo</span>
+            &nbsp;&nbsp;
+            <sup>
+              <span class="badge badge-pill badge-sm bg-warning">&nbsp;</span>
+            </sup>
+            <span>Em atendimento</span>
+            &nbsp;&nbsp;
+            <sup>
+              <span class="badge badge-pill badge-sm bg-success">&nbsp;</span>
+            </sup>
+            <span>Finalizado</span>
+          </small>
+        </div>
+        <ng-template #legendTipo  class="legend text-left" ngPreserveWhitespaces>
+          <div>
+            <small>
+              <sup>
+                <span class="badge badge-pill badge-sm bg-danger">&nbsp;</span>
+              </sup>
+              <span>Dúvidas</span>
+              &nbsp;&nbsp;
+              <sup>
+                <span class="badge badge-pill badge-sm bg-warning">&nbsp;</span>
+              </sup>
+              <span>Erro em relatório</span>
+              &nbsp;&nbsp;
+              <sup>
+                <span class="badge badge-pill badge-sm bg-success">&nbsp;</span>
+              </sup>
+              <span>Sugestões e reclamações</span>
+              &nbsp;&nbsp;
+              <sup>
+                <span class="badge badge-pill badge-sm" style="background-color: '#FF6D01';">&nbsp;</span>
+              </sup>
+              <span>Parada de máquina</span>
+              &nbsp;&nbsp;
+              <sup>
+                <span class="badge badge-pill badge-sm" style="background-color: '#8B4513';">&nbsp;</span>
+              </sup>
+              <span>Touch Panel</span>
+              &nbsp;&nbsp;
+              <sup>
+                <span class="badge badge-pill badge-sm" style="background-color: '#39f';">&nbsp;</span>
+              </sup>
+              <span>Modificação de relatório</span>
+              &nbsp;&nbsp;
+              <sup>
+                <span class="badge badge-pill badge-sm bg-dark" style="background-color: '#808080';">&nbsp;</span>
+              </sup>
+              <span>Novo relatório</span>
+            </small>
+          </div>
+        </ng-template>
+      </c-row>
+    </c-card-body>
+  </c-card>
+</c-col>

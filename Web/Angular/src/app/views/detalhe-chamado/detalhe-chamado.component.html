@@ -1,0 +1,313 @@
+<c-col xs="12">
+  <c-card class="mb-12">
+    <c-card-header>
+      <strong>Chamado: {{chamadoViewModel.id}}</strong>
+    </c-card-header>
+    <c-card-body>
+      <c-input-group class="mb-3">
+        <div cForm cFormFloating>
+          <input cFormControl placeholder="Descrição" type="text" value="{{chamadoViewModel.descricao}}"
+            readonly="true" />
+          <label cLabel for="floatingInputValue">Descrição</label>
+        </div>
+      </c-input-group>
+
+      <c-input-group class="mb-3">
+        <c-button-group aria-label="Basic example" role="group">
+          <div ng-if="chamadoViewModel !== null" *ngFor="let tag of chamadoViewModel.tag">
+            <c-badge color="{{tag.badge}}">
+              <strong>{{tag.tag}}</strong>
+            </c-badge>
+            &nbsp;
+          </div>
+        </c-button-group>
+      </c-input-group>
+
+      <wbr>
+
+      <c-input-group class="mb-3">
+        <div cForm cFormFloating>
+          <input cFormControl placeholder="Classificação" type="text"
+            value="{{chamadoViewModel.classificacao?.classificacao || null}}" readonly="true" />
+          <label cLabel for="floatingInputValue">Classificação</label>
+        </div>
+        <div cForm cFormFloating>
+          <input cFormControl placeholder="Atendente atual" type="text"
+            value="{{chamadoViewModel.chamadoTime?.nomeDoTime ?? chamadoViewModel.classificacao?.time?.nomeDoTime}}" readonly="true" />
+          <label cLabel for="floatingInputValue">Atendente atual</label>
+        </div>
+        <div cForm cFormFloating *ngIf="habilitarFecharChamado()">
+          <select title="Alterar atendente" id="novoAtendente" name="novoAtendente"
+            (change)="onItemChangeAtendente(chamadoViewModel, $event)" cSelect>
+            <option [value]="">Selecione o atendente</option>
+            <option *ngFor="let time of times" [value]="time.email" [title]="time.nomeDoTime">{{time.nomeDoTime}}
+            </option>
+          </select>
+          <label cLabel for="floatingInputValue">Alterar atendente</label>
+        </div>
+        <div cForm cFormFloating>
+          <input cFormControl placeholder="Percentual Atendimento" type="number"
+            value="{{chamadoViewModel.percentualAtendimento}}" (change)="onItemChangePercentualAtendimento($event)" />
+          <label cLabel for="floatingInputValue">Percentual atendimento (%)</label>
+        </div>
+        <button color="warning" cButton class="me-1" (click)="registrarProgresso()">
+          <strong>Registrar progresso</strong>
+        </button>
+      </c-input-group>
+
+      <c-input-group class="mb-3">
+        <div cForm cFormFloating>
+          <input cFormControl placeholder="Aberto em" type="text"
+            value="{{chamadoViewModel.dtReg  | date: 'dd/MMM/yyyy HH:mm'}}" readonly="true" />
+          <label cLabel for="floatingInputValue">Aberto em</label>
+        </div>
+        <div cForm cFormFloating>
+          <input cFormControl placeholder="Última Atualização" type="text"
+            value="{{chamadoViewModel.ultimaAtualizacao  | date: 'dd/MMM/yyyy HH:mm'}}" readonly="true" />
+          <label cLabel for="floatingInputValue">Última Atualização</label>
+        </div>
+        <div cForm cFormFloating>
+          <input cFormControl placeholder="Início de atendimento" type="text"
+            value="{{chamadoViewModel.dtAtendimento  | date: 'dd/MMM/yyyy HH:mm'}}" readonly="true" />
+          <label cLabel for="floatingInputValue">Início de atendimento</label>
+        </div>
+        <div cForm cFormFloating>
+          <input cFormControl placeholder="Fechado em" type="text"
+            value="{{chamadoViewModel.dtFechamento  | date: 'dd/MMM/yyyy HH:mm'}}" readonly="true" />
+          <label cLabel for="floatingInputValue">Fechado em</label>
+        </div>
+      </c-input-group>
+
+      <label cLabel for="basic-url">Prioridade</label>
+      <c-input-group class="mb-3">
+        <c-button-group aria-label="Basic example" role="group">
+          <div>
+            <c-badge color="{{chamadoViewModel.tipo?.cor}}">
+              <strong>Ordem de atendimento: {{chamadoViewModel.tipo?.ordem}}</strong>
+            </c-badge>
+            &nbsp;
+          </div>
+        </c-button-group>
+      </c-input-group>
+      <c-input-group class="mb-3">
+        <span cInputGroupText>Tipo do chamado</span>
+        <input aria-label="" cFormControl placeholder="Tipo do chamado" value="{{chamadoViewModel.tipo?.chamadoTipo}}"
+          readonly="true" />
+        <span cInputGroupText>Primeiro combate</span>
+        <input aria-label="" cFormControl placeholder="Primeiro combate"
+          value="{{chamadoViewModel.tipo?.usPrimeiroCombate}}" readonly="true" />
+      </c-input-group>
+      <c-input-group class="mb-3">
+        <span cInputGroupText>SLA Atendimento/Horas</span>
+        <input aria-label="" cFormControl placeholder="{{chamadoViewModel.prioridade?.slaRecebimentoHoras}}"
+          value="{{chamadoViewModel.prioridade?.slaAtendimentoHoras}}" readonly="true" />
+        <span cInputGroupText>SLA Recebimento/Horas</span>
+        <input aria-label="" cFormControl placeholder="{{chamadoViewModel.prioridade?.slaRecebimentoHoras}}"
+          value="{{chamadoViewModel.prioridade?.slaRecebimentoHoras}}" readonly="true" />
+      </c-input-group>
+
+      <c-input-group class="mb-3">
+        <div cForm cFormFloating>
+          <input cFormControl placeholder="Em atendimento?" type="text"
+            value="{{chamadoViewModel.emAtendimento ? 'SIM' : 'NÃO'}}" readonly="true" />
+          <label cLabel for="floatingInputValue">Em atendimento?</label>
+        </div>
+        <div cForm cFormFloating>
+          <input cFormControl placeholder="Em atraso?" type="text"
+            value="{{chamadoViewModel.estahAtrasado ? 'SIM' : 'NÃO'}}" readonly="true" />
+          <label cLabel for="floatingInputValue">Em atraso?</label>
+        </div>
+        <div cForm cFormFloating>
+          <input cFormControl placeholder="Está Pendente?" type="text"
+            value="{{chamadoViewModel.estahPendente ? 'SIM' : 'NÃO'}}" readonly="true" />
+          <label cLabel for="floatingInputValue">Está Pendente?</label>
+        </div>
+        <div cForm cFormFloating>
+          <input cFormControl placeholder="Solicitante" type="text" value="{{chamadoViewModel.usSolicitante}}"
+            readonly="true" />
+          <label cLabel for="floatingInputValue">Solicitante</label>
+        </div>
+      </c-input-group>
+
+      <c-input-group class="mb-3">
+        <div cForm cFormFloating>
+          <input cFormControl placeholder="Máquina" type="text" value="{{chamadoViewModel.maquina?.bezeichnung}}"
+            readonly="true" />
+          <label cLabel for="floatingInputValue">Máquina</label>
+        </div>
+      </c-input-group>
+
+      <c-input-group class="mb-3">
+        <c-row>
+          <c-col>
+            <label cLabel for="formAnexarAquivo">Anexar arquivo</label>
+            <input cFormControl #formAnexarAquivo formControlName="formAnexarAquivo" id="formAnexarAquivo" sizing="sm"
+              type="file" title="Adicionar anexo ao chamado"
+              (change)="onItemChangeAdicionarAnexo(chamadoViewModel, $event)" />
+          </c-col>
+        </c-row>
+      </c-input-group>
+      <c-input-group class="mb-3">
+        <c-row>
+          <c-col>
+            <label cLabel *ngIf="carregandoAnexo">Aguarde...Adicionando arquivo ao chamado</label>
+            <label cLabel *ngIf="baixandoAnexo">Aguarde...Baixando arquivo do chamado</label>
+            <label cLabel *ngIf="removendoAnexo">Aguarde...Apagando arquivo do chamado</label>
+          </c-col>
+        </c-row>
+      </c-input-group>
+      <c-input-group class="mb-3">
+        <c-row ng-if="chamadoViewModel !== null" *ngFor="let anexo of chamadoViewModel.anexos">
+          <c-col>
+            <c-card class="mb-4">
+              <img alt="{{anexo.nomeArquivo}}" width="64" height="64"
+                src="../../../assets/img/files/{{anexo.icone}}.png">
+              <c-card-body>
+                <h6 cCardTitle>{{anexo.nomeArquivo}}</h6>
+                <p cCardText>
+                  Adicionado por: {{anexo.usAnexo}}
+                </p>
+                <c-button-group aria-label="" right role="group">
+                  <button cButton style="margin-left: -12px !important;" class="me-1" color="link"
+                    (click)="baixarAnexo(anexo, $event)">
+                    <small>Baixar/Visualizar</small>
+                  </button>
+                  <button cButton style="margin-left: -12px !important;" class="me-1" color="link"
+                    (click)="removerAnexo(anexo, $event)">
+                    <small>Apagar</small>
+                  </button>
+                </c-button-group>
+              </c-card-body>
+            </c-card>
+          </c-col>
+        </c-row>
+      </c-input-group>
+
+      <wbr>
+      <div *ngIf="ehAdministrador">
+        <div align="end">
+          <c-button-group aria-label="" role="group">
+            <button color="warning" *ngIf="habilitarIniciarAtendimentoChamado()" cButton class="me-1"
+              (click)="iniciaratendimento()">
+              <strong>Iniciar Atendimento Chamado</strong>
+            </button>
+          </c-button-group>
+        </div>
+      </div>
+
+      <wbr>
+
+      <c-input-group class="mb-3" *ngIf="habilitarFecharChamado()">
+        <div cFormFloating>
+          <textarea cFormControl placeholder="Atendimento realizado" type="text"
+            value="{{chamadoViewModel.atendimento}}" rows="3" (change)="onTextAreaChangeAtendimento($event)"></textarea>
+          <label cLabel for="floatingInputValue">Sobre o atendimento realizado</label>
+        </div>
+      </c-input-group>
+      <c-input-group class="mb-3" *ngIf="!habilitarFecharChamado()">
+        <div style="border: solid 0.3em transparent; border-left-color: #39f; width: auto; padding-left: 0.2em;">
+          <label cLabel for="floatingInputValue">Sobre o atendimento realizado</label>
+          <h4>"{{chamadoViewModel.atendimento}}"</h4>
+        </div>
+      </c-input-group>
+
+      <div align="end">
+        <c-button-group aria-label="" role="group">
+          <button *ngIf="habilitarFecharChamado()" cButton class="me-1" (click)="fecharChamado()">
+            <strong>Fechar Chamado</strong>
+          </button>
+        </c-button-group>
+      </div>
+      <br>
+      <c-nav variant="tabs">
+        <c-nav-item>
+          <a [active]="true" [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="0" cNavLink>
+            Comentários
+          </a>
+        </c-nav-item>
+        <c-nav-item>
+          <a [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="1" cNavLink>
+            Histórico
+          </a>
+        </c-nav-item>
+      </c-nav>
+      <c-tab-content #tabContent="cTabContent" [activeTabPaneIdx]="1">
+        <c-tab-pane>
+          <div>
+            <br>
+            <c-toast id="toastComentario" [autohide]="false" [fade]="false" [visible]="true">
+              <c-toast-body>
+                <div cFormFloating>
+                  <textarea cFormControl name="novoComentario" id="novoComentario"
+                    placeholder="Digite aqui um novo comentário" type="text" rows="3"
+                    value="{{chamadoViewModel.novoComentario}}" [readonly]="statusFinalizado"
+                    (change)="onTextAreaChangeComentario($event)"></textarea>
+                  <label cLabel for="floatingTextarea">Digite aqui um novo comentário</label>
+                  <br>
+                  <div align="end">
+                    <c-button-group aria-label="" right role="group">
+                      <button cButton color="light" [disabled]="statusFinalizado" (click)="adicionarComentario()">
+                        <small>Incluir</small>
+                      </button>
+                    </c-button-group>
+                  </div>
+                </div>
+              </c-toast-body>
+            </c-toast>
+          </div>
+          <br>
+          <div>
+            <c-form-check>
+              <input cFormCheckInput [checked]="filtrarSolicitante" id="checkOne" type="checkbox"
+                (change)="filtrarSolicitante = !filtrarSolicitante" />
+              <label cFormCheckLabel for="checkOne">Comentários do usuário</label>
+            </c-form-check>
+            <c-form-check>
+              <input cFormCheckInput [checked]="filtrarAtendente" id="checkTwo" type="checkbox"
+                (change)="filtrarAtendente = !filtrarAtendente" />
+              <label cFormCheckLabel for="checkTwo">Ações do atendente </label>
+            </c-form-check>
+            <div>
+              <c-button-group aria-label="" role="group">
+                <button cButton class="me-1" (click)="filtrarComentarios()">
+                  <small>Filtrar Comentários</small>
+                </button>
+              </c-button-group>
+            </div>
+          </div>
+          <div ng-if="chamadoViewModel !== null" *ngFor="let comentario of comentarios">
+            <br>
+            <div cForm>
+              <div>
+                <label cLabel for="floatingInputValue">Comentário em <b>{{comentario.dtReg | date: 'dd/MMM/yy
+                    HH:mm'}}</b> por <b>{{comentario.usComentario}}</b></label>
+              </div>
+              <textarea style="font-size: small;" cFormControl
+                placeholder="Comentário em {{comentario.dtReg | date: 'dd/MMM/yy HH:mm'}}" type="text"
+                value="{{comentario.comentario}}" readonly="true" rows="5">
+                </textarea>
+            </div>
+          </div>
+        </c-tab-pane>
+        <c-tab-pane>
+          <div class="accordion-body">
+            <div ng-if="chamadoViewModel !== null" *ngFor="let historico of chamadoViewModel.historico"
+              class="form-row">
+              <br>
+              <div
+                style="border: solid 0.3em transparent; border-left-color: rgb(255, 51, 85); width: auto; padding-left: 0.2em;">
+                <div>
+                  <label cLabel for="floatingInputValue">Ação realizada em <b>{{historico.dtReg | date: 'dd/MMM/yy
+                      HH:mm'}}</b> por <b>{{historico.usHistorico}}</b></label>
+                </div>
+                <span>De: {{historico.de}} - Para: {{historico.para}}</span>
+              </div>
+            </div>
+          </div>
+        </c-tab-pane>
+      </c-tab-content>
+      <br>
+      <br>
+    </c-card-body>
+  </c-card>
+</c-col>

@@ -1,0 +1,5 @@
+<div>
+    <c-spinner color="primary" *ngIf="loading"></c-spinner>
+
+    <app-dynamic-questao [questao]="primeiraQuestao" (onSubmit)="onSubmit($event)" *ngIf="!loading"></app-dynamic-questao>
+</div>

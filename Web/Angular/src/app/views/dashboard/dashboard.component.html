@@ -1,0 +1,216 @@
+<div *ngIf="!pageLoaded">
+  <c-spinner color="primary"></c-spinner>
+</div>
+
+<div *ngIf="pageLoaded">
+  <!-- Totalizador chamados -->
+  <c-row *ngIf="totalizador">
+    <totalizador-chamados
+      [model]="totalizador.chamadosAbertos"
+      style="width: 20%"
+    ></totalizador-chamados>
+    <totalizador-chamados
+      [model]="totalizador.chamadosEncerrados"
+      style="width: 20%"
+    ></totalizador-chamados>
+    <totalizador-chamados
+      [model]="totalizador.chamadosPendentes"
+      style="width: 20%"
+    ></totalizador-chamados>
+    <totalizador-chamados
+      [model]="totalizador.chamadosEmAtraso"
+      style="width: 20%"
+    ></totalizador-chamados>
+    <totalizador-chamados
+      [model]="totalizador.outrasAreas"
+      style="width: 20%"
+    ></totalizador-chamados>
+  </c-row>
+
+  <div *ngIf="evolutivo" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; border-radius: 5px;">
+    <!-- Evolutivo Mensal  -->
+    <evolutivo-mensal [model]="evolutivo"></evolutivo-mensal>
+  </div>
+
+  <!-- Incidentes de área -->
+  <div *ngIf="incidentesPorAreaStatus && incidentesPorAreaTipo" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; border-radius: 5px;">
+    <incidentes-area [modelStatus]="incidentesPorAreaStatus" [modelTipo]="incidentesPorAreaTipo"></incidentes-area>
+</div>
+
+  <!-- Lista de chamados -->
+  <c-row>
+    <c-col xs>
+      <c-card class="mb-4" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+        <c-card-header>Listagem de Chamados</c-card-header>
+        <c-card-body>
+          <table
+            [hover]="true"
+            [responsive]="true"
+            [striped]="true"
+            align="middle"
+            cTable
+            class="mb-0 border"
+          >
+            <thead cTableColor="light">
+              <tr>
+                <th class="text-center">
+                  <svg cIcon name="cilPeople"></svg>
+                </th>
+                <th>
+                  <select
+                    [(ngModel)]="selectedUser"
+                    aria-label="Default select example"
+                    cSelect
+                    sizing="sm"
+                  >
+                    <option value="">Solicitante (ID)</option>
+                    <option
+                      *ngFor="let item of listUsers"
+                      [ngValue]="item.usSolicitante"
+                    >
+                      {{ item.usSolicitanteNomeCompleto }}
+                    </option>
+                  </select>
+                </th>
+                <th>
+                  <select
+                    [(ngModel)]="selectedStatus"
+                    aria-label="Default select example"
+                    cSelect
+                    sizing="sm"
+                  >
+                    <option value="">Status</option>
+                    <option
+                      *ngFor="let item of listStatus"
+                      [ngValue]="item.status"
+                    >
+                      {{ item.status }}
+                    </option>
+                  </select>
+                </th>
+                <th>
+                  Atividade
+                </th>
+                <th class="text-center">
+                  <select
+                    [(ngModel)]="selectedTime"
+                    aria-label="Default select example"
+                    cSelect
+                    sizing="sm"
+                  >
+                    <option value="">Time</option>
+                    <option
+                      *ngFor="let item of listTime"
+                      [ngValue]="item.nomeDoTime"
+                    >
+                      {{ item.nomeDoTime }}
+                    </option>
+                  </select>
+                </th>
+                <th>Ação</th>
+                <th class="text-left">Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let chamado of ultimosChamados
+                    | tableFilter
+                      : selectedUser
+                      : selectedStatus
+                      : selectedTime;
+                  index as i
+                "
+              >
+                <td class="text-center">
+                  <c-avatar
+                    size="md"
+                    src="{{ chamado.avatar }}"
+                    status="{{ chamado.statusCor }}"
+                  ></c-avatar>
+                </td>
+                <td>
+                  <div>
+                    {{ chamado.idChamado }} -
+                    {{ chamado.usSolicitanteNomeCompleto }}
+                  </div>
+                  <div class="small text-medium-emphasis text-nowrap">
+                    <span> Cadastrado em: {{ chamado.registradoEm }} </span>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    {{ chamado.status }}
+                  </div>
+                </td>
+                <td>
+                  <div
+                    #radialProgress
+                    class="radialProgress"
+                    role="progressbar"
+                    attr.aria-valuenow="{{ chamado.percentualAtendimento }}"
+                    attr.aria-valuemin="{{ 0 }}"
+                    attr.aria-valuemax="{{ 100 }}"
+                  >{{ chamado.percentualAtendimento }}</div>
+
+                  <!-- <div ui-knob [value]="value" [options]="knOptions"></div> -->
+
+                  <input
+                    #inputRange
+                    type="range"
+                    value="{{ chamado.percentualAtendimento }}"
+                    min="0"
+                    max="100"
+                    (input)="atualizarProgressBar($event)"
+                    (change)="registrarRadialProgress(chamado, $event)"
+                    [style.display]="
+                      chamado.percentualAtendimento == 100 ||
+                      chamado.status == 'Finalizado'
+                        ? 'none'
+                        : 'block'
+                    "
+                  />
+                </td>
+                <td class="text-center">
+                  {{ chamado.time }}
+                </td>
+                <td class="text-center">
+                  <a href="{{ href }}?idChamado={{ chamado.idChamado }}">
+                    Detalhes
+                  </a>
+                </td>
+
+                <td>
+                  <div class="small text-medium-emphasis"></div>
+                  <div
+                    class="fw-semibold text-nowrap"
+                    *ngIf="chamado.ultimaAtividade"
+                  >
+                  <p *ngIf="chamado.ultimaAtividade.length > 70" style="cursor: pointer; white-space: normal;" (click)="toggleLiveDemo(chamado.idChamado + '|' + chamado.ultimaAtividade)" >
+                    {{ chamado.ultimaAtividade.substring(0, 70) }} ...
+                  </p>
+                  <p *ngIf="chamado.ultimaAtividade.length <= 70" style="white-space: normal;">
+                    {{ chamado.ultimaAtividade }}
+                  </p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+</div>
+
+<c-modal [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Detalhes do chamado - {{ modalNumChamado }}</h5>
+    <button (click)="toggleLiveDemo('')" cButtonClose></button>
+  </c-modal-header>
+  <ng-container *ngTemplateOutlet="longContent"></ng-container>
+</c-modal>
+
+<ng-template #longContent>
+  <p style="white-space: normal; padding: 10px; text-align: justify;">{{ textoDetalhe }}</p>
+</ng-template>

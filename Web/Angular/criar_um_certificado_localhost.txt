@@ -1,0 +1,37 @@
+1 -criar o arquivo com nome: certificate.cnf
+salvar o conteudo abaixo
+
+[req]
+default_bits = 2048
+prompt = no
+default_md = sha256
+x509_extensions = v3_req
+distinguished_name = dn
+[dn]
+C = GB
+ST = London
+L = London
+O = My Organisation
+OU = My Organisational Unit
+emailAddress = email@domain.com
+CN = localhost
+[v3_req]
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = localhost
+
+
+
+2 - Rodar no gitbash (se não tiver instalar usando o git windows) o comando abaixo:
+openssl req -new -x509 -newkey rsa:2048 -sha256 -nodes -keyout localhost.key -days 3560 -out localhost.crt -config certificate.cnf
+
+
+3 - se necessário, alterar o package.json do projeto angular com a configuração abaixo:
+"start": "ng serve --ssl --ssl-key d:\\certificates\\localhost.key  --ssl-cert d:\\certificates\localhost.crt"
+
+(lembrar de deixar os arquivos de key na mesma pasta pra rodar corretamente)
+
+
+
+site de referencia: 
+https://medium.com/@richardr39/using-angular-cli-to-serve-over-https-locally-70dab07417c8

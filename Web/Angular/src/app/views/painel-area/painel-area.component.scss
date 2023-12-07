@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.spinner {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+c-spinner {
+  margin: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+.imagem-carousel {
+  width: auto;
+  height: 88px;
+  border-radius: 8px;
+}
+
+.painel {
+  display: flex;
+  flex-direction: row;
+  width: 100% !important;
+  height: 100%;
+}
+
+.area-um {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  height: 100%;
+}
+
+.area-dois {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  border-radius: 8px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.384);
+  padding: 20px;
+  margin: 10px;
+  flex-grow: 1;
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+}
+
+.card.lista {
+  padding: 0;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  flex: 1;
+}
+
+.card-number {
+  color: #fff;
+  font-size: 5rem;
+  margin-bottom: 5px;
+  align-items: center;
+}
+
+.card-description {
+  font-size: 1.8 rem;
+  color: #fff;
+  align-self: flex-end;
+}
+
+.card-title {
+  background-color: #0270C5;
+  font-size: 1.6rem;
+  color: #fff;
+  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+.card-title-maquinas {
+  font-size: 1.6rem;
+  color: #fff;
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+.card.maquinas {
+  padding: 0;
+}
+
+.card.novo {
+  background-color: #FF4E4E;
+}
+
+.card.atendimento {
+  background-color: #FFD700;
+}
+
+.card.finalizado {
+  background-color: #34A853;
+}
+
+.chamados-area {
+  display: flex;
+  flex-direction: row;
+  max-height: 40vh;
+  flex-grow: 1;
+  flex: 3;
+  overflow: hidden;
+}
+
+.chamados-lista {
+  display: flex;
+  width: 100%;
+  flex: 7;
+  overflow: hidden;
+}
+
+.maquinas {
+  flex: 1;
+}
+
+.card.maquinas {
+  .card-content {
+    background: linear-gradient(to bottom, #0270C5, #87CEEB);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+  }
+}
+
+.item-list {
+  list-style: none;
+  padding: 5px;
+  margin: 0;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: flex-start;
+}
+
+.item {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  position: relative;
+}
+
+.item:nth-child(1) {
+  margin-top: 20px;
+}
+
+.item::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: white;
+}
+
+.card.maquinas svg.icon {
+  align-self: flex-end;
+  margin-top: auto;
+  margin-bottom: auto;
+  color: #34A853;
+}
+
+.chamados-area svg.icon {
+  align-self: flex-end;
+  margin-top: auto;
+  margin-bottom: auto;
+  color: #fff;
+}
+
+#iconNovo {
+  color: #FF4E4E;
+}
+
+#iconAtendimento {
+  color: #FFD700;
+}
+
+#iconFinalizado {
+  color: #34A853;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  table-layout: fixed;
+  overflow: hidden;
+  height: 100%;
+}
+
+thead {
+  background-color: lightgray;
+
+  tr {
+    th {
+      text-align: center;
+      vertical-align: middle;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      select {
+        margin-left: 0px;
+        font-size: 14px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        border: none;
+        background-color: white;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+thead th.text-left {
+  text-align: left!important;
+}
+
+
+

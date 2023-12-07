@@ -1,0 +1,50 @@
+
+<c-col xs="12">
+  <c-card class="mb-4" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+    <c-card-header style="background: #17a2b8;">
+      <!-- <img src="./assets/logo-noris.png" style="margin-top: -15px; height: 50px;" alt="Noris "/>-->
+      <strong style="color: #fff; font-size: 1.8rem;margin-left: 20px;">{{questao?.titulo}}</strong>
+      <span></span>
+    </c-card-header>
+    <c-card-body style="padding: 70px;">
+      <span style="font-size: 1.5rem;">{{questao?.textoComplementar}}</span>
+      <form (ngSubmit)="submit()" [formGroup]="form" cForm style="margin-top: 40px;">
+        <div class="mb-3" ng-if="questao !== null" *ngFor="let opcao of questao?.opcoes" class="form-row">
+          <app-opcao [opcao]="opcao" [(resposta)]="resposta" [form]="form"></app-opcao>
+        </div>
+        
+        <c-input-group class="mb-3">
+          <c-row *ngIf="questao?.ehUltimo == true">
+            <c-col>
+                <label cLabel for="formAnexarAquivo">Anexar arquivo</label>
+                <input cFormControl #formAnexarAquivo formControlName="formAnexarAquivo" id="formAnexarAquivo" sizing="sm" type="file" title="Adicionar anexo" (change)="onItemChangeAdicionarAnexo($event)"/>
+            </c-col>
+          </c-row>
+        </c-input-group>
+        <c-input-group class="mb-3">
+          <c-row ng-if="anexos !== null && questao?.ehUltimo == true" *ngFor="let anexo of anexos">
+            <c-col>
+              <c-card class="mb-4">
+                <img alt="{{anexo.nomeArquivo}}" width="64" height="64" src="../../../../assets/img/files/file.png">
+                <c-card-body>
+                  <h6 cCardTitle>{{anexo.nomeArquivo}}</h6>                  
+                    <c-button-group aria-label="" right role="group">
+                      <button cButton style="margin-left: -12px !important;"  class="me-1" color="link" (click)="removerAnexo(anexo, $event)">
+                        <small>Apagar</small>
+                      </button>
+                    </c-button-group>                                  
+                </c-card-body>
+              </c-card>
+            </c-col>
+          </c-row>
+        </c-input-group>
+             
+        <c-button-group aria-label="Basic example" role="group" style="margin-top: 10px;">
+          <button *ngIf="exibeAnterior()"   cButton class="me-1" (click)="onPrev($event)" color="light">Anterior</button>
+          <button *ngIf="!questao?.ehUltimo" cButton class="me-1" (click)="onNext($event)">Próximo</button>
+          <button *ngIf="questao?.ehUltimo"  cButton class="me-1" type="submit">Enviar</button>
+        </c-button-group>
+      </form>
+    </c-card-body>
+  </c-card>
+</c-col>

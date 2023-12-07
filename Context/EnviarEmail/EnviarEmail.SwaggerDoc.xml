@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EnviarEmail</name>
+    </assembly>
+    <members>
+        <member name="T:EnviarEmail.Application.Interfaces.IEnviarAppService">
+            <summary>
+            Interface abertura de EnviarEmail
+            </summary>
+        </member>
+        <member name="M:EnviarEmail.Application.Interfaces.IEnviarAppService.Enviar(EnviarEmail.Application.ViewModels.Enviar.EnviarViewModel)">
+            <summary>
+            Enviar Email via smtp
+            </summary>
+            <param name="dadosEntrada">Entrada dos dados a serem enviados via email</param>
+            <returns>Lista de EnviarEmail</returns>
+        </member>
+        <member name="T:EnviarEmail.Application.EnviarAppService">
+            <summary>
+            Service para abrir EnviarEmail
+            </summary>
+        </member>
+        <member name="M:EnviarEmail.Application.EnviarAppService.#ctor(System.IServiceProvider)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <returns></returns>
+        </member>
+        <member name="M:EnviarEmail.Application.EnviarAppService.Enviar(EnviarEmail.Application.ViewModels.Enviar.EnviarViewModel)">
+            <summary>
+            Enviar Email via smtp
+            </summary>
+            <param name="dadosEntrada">Filtro de dados</param>
+            <returns>EnviarEmail</returns>
+        </member>
+        <member name="T:EnviarEmail.Application.ViewModels.Enviar.EnviarResultDataViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:EnviarEmail.Application.ViewModels.Enviar.EnviarResultDataViewModel.Result">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:EnviarEmail.Application.ViewModels.Enviar.EnviarResultViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:EnviarEmail.Application.ViewModels.Enviar.EnviarResultViewModel.Mensagem">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:EnviarEmail.Application.ViewModels.Enviar.EnviarResultViewModel.Result">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:EnviarEmail.Application.ViewModels.Enviar.EnviarViewModel">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:EnviarEmail.Application.ViewModels.Enviar.EnviarViewModel.Anexo">
+            <summary>
+            Dados no formato Base64
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:EnviarEmail.Application.ViewModels.Enviar.EnviarViewModel.Cc">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:EnviarEmail.Application.ViewModels.Enviar.EnviarViewModel.Corpo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:EnviarEmail.Application.ViewModels.Enviar.EnviarViewModel.NomeAmigavel">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:EnviarEmail.Application.ViewModels.Enviar.EnviarViewModel.Para">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:EnviarEmail.Application.ViewModels.Enviar.EnviarViewModel.Titulo">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:EnviarEmail.Application.ViewModels.Enviar.EnviarViewModel.UsuarioAtual">
+             <summary>
+            
+             </summary>
+             <value></value>
+        </member>
+        <member name="T:EnviarEmail.Configuration.AppRegistration">
+            <summary>
+            Classe para registro o app
+            </summary>
+        </member>
+        <member name="M:EnviarEmail.Configuration.AppRegistration.AddEnviarEmail(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adicionar services dos EnviarEmail
+            </summary>
+            <param name="services">Service collection</param>
+            <returns>Service collection</returns>
+        </member>
+        <member name="T:EnviarEmail.Domain.Entity.EnviarEmailEntity">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:EnviarEmail.Domain.Entity.EnviarEmailEntity.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:EnviarEmail.Domain.Entity.EnviarEmailEntity.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{EnviarEmail.Domain.Entity.EnviarEmailEntity})">
+             <summary>
+            
+             </summary>
+             <param name="builder"></param>
+        </member>
+        <member name="T:EnviarEmail.Domain.UseCases.Enviar.EnviarUseCase">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:EnviarEmail.Domain.UseCases.Enviar.EnviarUseCase.#ctor(System.IServiceProvider,Microsoft.Extensions.Configuration.IConfiguration)">
+             <summary>
+            
+             </summary>
+             <param name="serviceProvider"></param>
+             <param name="configuration"></param>
+             <returns></returns>
+        </member>
+        <member name="M:EnviarEmail.Domain.UseCases.Enviar.EnviarUseCase.ExecuteInternal(EnviarEmail.Application.ViewModels.Enviar.EnviarViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="dadosEntrada"></param>
+             <returns></returns>
+        </member>
+        <member name="M:EnviarEmail.Domain.UseCases.Enviar.EnviarUseCase.ValidateEntry(EnviarEmail.Application.ViewModels.Enviar.EnviarViewModel)">
+             <summary>
+            
+             </summary>
+             <param name="dadosEntrada"></param>
+        </member>
+    </members>
+</doc>

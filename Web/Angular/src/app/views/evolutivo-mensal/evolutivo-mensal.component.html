@@ -1,0 +1,40 @@
+<c-card *ngIf="mainChart" class="mb-4">
+  <c-card-body>
+    <c-row>
+      <c-col sm="5">
+        <h4 class="card-title mb-0" id="traffic">Evolutivo</h4>
+        <div class="small text-medium-emphasis">Chamados mês atual em comparação ao ano</div>
+      </c-col>
+      <c-col class="d-none d-md-block" sm="4">
+      </c-col>
+      <c-col class="d-none d-md-block" sm="3" style="text-align: right;">
+        <div style="display: flex;">
+          <div style="flex: 0 0 auto; width: 15px; height: 15px; background-color: #39f;"></div>
+          <div style="flex: 0 0 auto; margin-left: 10px; margin-top: -4px;">Abertos</div>
+          <div style="flex: 0 0 auto; margin-left: 10px;width: 15px; height: 15px; background-color: #2eb85c;"></div>
+          <div style="flex: 0 0 auto; margin-left: 10px; margin-top: -4px;">Fechados</div>
+
+        </div>
+      </c-col>
+    </c-row>
+    <c-chart
+      [data]="mainChart.data"
+      [height]="300"
+      [ngStyle]="{ 'marginTop.px': 40 }"
+      [options]="mainChart.options"
+      [type]="mainChart.type">
+      Gráfico Geral
+    </c-chart>
+  </c-card-body>
+  <!--c-card-footer>
+    <c-row class="text-center" [md]="5" [xs]="1">
+      <c-col *ngFor="let item of mainChart.totalizadores; index as i; last as isLast" class="mb-sm-2 mb-0">
+        <div class="text-medium-emphasis">{{item.descricao}}</div>
+        <strong>{{item.total}} Chamados ({{item.porcentagem}}%)</strong>
+        <c-progress class="mt-2" thin>
+          <c-progress-bar [color]="item.cor" [value]="item.porcentagem"></c-progress-bar>
+        </c-progress>
+      </c-col>
+    </c-row>
+  </c-card-footer>-->
+</c-card>

@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ChamadosApi</name>
+    </assembly>
+    <members>
+        <member name="T:ChamadosApi.Attribute.CustomHeaderSwaggerAttribute">
+             <summary>
+             </summary>
+        </member>
+        <member name="M:ChamadosApi.Attribute.CustomHeaderSwaggerAttribute.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+             <summary>
+             </summary>
+             <param name="operation"></param>
+             <param name="context"></param>
+        </member>
+        <member name="T:ChamadosApi.Controllers.WeatherForecastController">
+             <summary>
+             </summary>
+        </member>
+        <member name="M:ChamadosApi.Controllers.WeatherForecastController.#ctor(Chamados.Application.Interfaces.IFormularioServiceApp)">
+             <summary>
+             </summary>
+             <param name="formularioServiceApp"></param>
+        </member>
+        <member name="M:ChamadosApi.Controllers.WeatherForecastController.Get">
+             <summary>
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:ChamadosApi.Controllers.WeatherForecastController.Post(Chamados.Application.ViewModels.Formulario.FormularioRequestViewModel)">
+             <summary>
+             </summary>
+             <param name="request"></param>
+             <returns></returns>
+        </member>
+        <member name="T:ChamadosApi.Filter.ExceptionFilter">
+            <summary>
+            Filtro de exceção
+            </summary>
+        </member>
+        <member name="M:ChamadosApi.Filter.ExceptionFilter.#ctor(Microsoft.Extensions.Logging.ILogger{ChamadosApi.Filter.ExceptionFilter})">
+            <summary>
+            Construtor de exceção utilizando logger registrado no modulo ioc
+            </summary>
+            <param name="logger">Logger</param>
+        </member>
+        <member name="M:ChamadosApi.Filter.ExceptionFilter.OnExceptionAsync(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            Método disparado quando a api estoura uma exceção
+            </summary>
+            <param name="context">Contexto da exceção</param>
+            <returns>Resposta http</returns>
+        </member>
+        <member name="M:ChamadosApi.Filter.ExceptionFilter.NotifyDev">
+            <summary>
+            Efetua notificação do time de desenvolvimento
+            </summary>
+        </member>
+        <member name="M:ChamadosApi.Filter.ExceptionFilter.ObterCodigoHttp(System.Exception)">
+            <summary>
+            Obtem código http da exceção de acordo com o tipo retornado da exceção
+            </summary>
+            <param name="excecao">Exceção</param>
+            <returns>Http Status Code</returns>
+        </member>
+        <member name="M:ChamadosApi.Filter.ExceptionFilter.ObterMensagem(System.Exception)">
+            <summary>
+            Obtém mensagem da exeção da mensagem de forma legível na resposta http
+            </summary>
+            <param name="excecao">Eceção retornada</param>
+            <returns>Texto da mensagem</returns>
+        </member>
+        <member name="M:ChamadosApi.Filter.ExceptionFilter.WriteLog(System.Exception)">
+            <summary>
+            Método para escrever log utilizando o logger customizado
+            </summary>
+            <param name="ex">Exceção</param>
+        </member>
+        <member name="T:ChamadosApi.Program">
+             <summary>
+             </summary>
+        </member>
+        <member name="M:ChamadosApi.Program.Main(System.String[])">
+             <summary>
+             </summary>
+             <param name="args"></param>
+        </member>
+        <member name="M:ChamadosApi.Program.CreateHostBuilder(System.String[])">
+             <summary>
+             </summary>
+             <param name="args"></param>
+             <returns></returns>
+        </member>
+        <member name="T:ChamadosApi.Startup">
+             <summary>
+             </summary>
+        </member>
+        <member name="M:ChamadosApi.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+             <summary>
+             </summary>
+             <param name="configuration"></param>
+        </member>
+        <member name="P:ChamadosApi.Startup.Configuration">
+             <summary>
+             </summary>
+             <value></value>
+        </member>
+        <member name="M:ChamadosApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="M:ChamadosApi.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:ChamadosApi.Startup.SecureApi(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+             <summary>
+             </summary>
+             <param name="services"></param>
+        </member>
+        <member name="T:ChamadosApi.WeatherForecast">
+             <summary>
+             </summary>
+        </member>
+        <member name="P:ChamadosApi.WeatherForecast.Date">
+             <summary>
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:ChamadosApi.WeatherForecast.TemperatureC">
+             <summary>
+             </summary>
+             <value></value>
+        </member>
+        <member name="P:ChamadosApi.WeatherForecast.TemperatureF">
+             <summary>
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="P:ChamadosApi.WeatherForecast.Summary">
+             <summary>
+             </summary>
+             <value></value>
+        </member>
+    </members>
+</doc>

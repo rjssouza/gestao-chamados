@@ -1,0 +1,134 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+<div class="spinner" *ngIf="!pageLoaded()">
+  <c-spinner variant="grow" color="dark"></c-spinner><div>Loading...</div>
+</div>
+
+<header>
+  <c-carousel [animate]="false" [interval]="0" (itemChange)="onItemChange($event)">
+    <c-carousel-indicators></c-carousel-indicators>
+    <c-carousel-inner>
+      <c-carousel-item *ngFor="let slide of slides">
+        <img
+          alt="{{slide.title}}"
+          class="imagem-carousel d-block w-100"
+          loading="lazy"
+          src="{{slide.src}}"
+        />
+        <c-carousel-caption class="d-none d-md-block">
+          <h4>{{slide.title}}</h4>
+          <p>{{slide.subtitle}}</p>
+        </c-carousel-caption>
+      </c-carousel-item>
+    </c-carousel-inner>
+    <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
+    <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
+  </c-carousel>
+</header>
+<div *ngIf="pageLoaded()" class="painel">
+  <div class="area-um">
+    <ng-container *ngIf="PainelSituacoesAreaStatus$ | async as PainelSituacoesAreaStatus">
+      <div class="chamados-area">
+        <div class="card novo">
+          <div class="card-content">
+            <svg cIcon name="cilWarning" size="3xl"></svg>
+            <h3 class="card-number">{{ getTotais(PainelSituacoesAreaStatus, activeArea, 'Novo') }}</h3>
+            <h4 class="card-description">Novo</h4>
+          </div>
+        </div>
+        <div class="card atendimento">
+          <div class="card-content">
+            <svg cIcon name="cilSettings" size="3xl"></svg>
+            <h3 class="card-number">{{ getTotais(PainelSituacoesAreaStatus, activeArea, 'Atendimento') }}</h3>
+            <h4 class="card-description">Atendimento</h4>
+          </div>
+        </div>
+        <div class="card finalizado">
+          <div class="card-content">
+            <svg cIcon name="cilCheckCircle" size="3xl"></svg>
+            <h3 class="card-number">{{ getTotais(PainelSituacoesAreaStatus, activeArea, 'Finalizado') }}</h3>
+            <h4 class="card-description">Finalizado</h4>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div *ngIf="pageLoaded()" class="chamados-lista">
+      <div class="card lista">
+        <div class="card-content">
+          <h2 class="card-title">Listagem de Chamados</h2>
+          <div *ngIf="pageLoaded">
+            <table
+              [hover]="true"
+              [responsive]="true"
+              [striped]="true"
+              cTable
+              class="mb-4 border"
+            >
+              <thead cTableColor="light">
+                <tr>
+                  <th class="text-center" style="width: 60px;">Status</th>
+                  <th>Número</th>
+                  <th>Máquina</th>
+                  <th>Solicitante</th>
+                  <th class="text-center">Data Abertura</th>
+                  <th>Atendente</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let chamado of chamadoArea | filterPainelArea: activeArea; index as i">
+                  <td style="width: 60px;">
+                    <div class="text-center">
+                      <svg *ngIf="chamado.status === 'Novo'" cIcon name="cilWarning" size="xl" id = iconNovo></svg>
+                      <svg *ngIf="chamado.status === 'Atendimento'" cIcon name="cilSettings" size="xl" id = iconAtendimento></svg>
+                      <svg *ngIf="chamado.status === 'Finalizado'" cIcon name="cilCheckCircle" size="xl" id = iconFinalizado></svg>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      {{ chamado.idChamado }}
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      {{ chamado.maquina }}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-center">
+                      {{ chamado.usSolicitanteNomeCompleto }}
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      {{ chamado.registradoEm }}
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      {{ chamado.responsavel }}
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="area-dois">
+    <div class="card maquinas">
+      <div class="card-content">
+        <h3 class="card-title-maquinas">Máquinas Impactadas</h3>
+        <ng-container *ngIf="MaquinasImpactadasAreaViewModel$ | async as MaquinasImpactadasAreaViewModel">
+          <ul class="item-list">
+            <li *ngFor="let maquina of getMaquinasImpactadas(MaquinasImpactadasAreaViewModel, activeArea)" class="item">
+              <div>{{ maquina.nomeMaquina }}</div> <div>{{ maquina.quantidadeChamados }}</div>
+            </li>
+          </ul>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
